@@ -1,0 +1,1698 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hotel Athithi — Restaurant & Lodge | Bharatpur, Chitwan Nepal</title>
+<meta name="description" content="Hotel Athithi — Where Guests Become God. Luxury lodge, restaurant, and hospitality in the heart of Bharatpur, gateway to Chitwan National Park, Nepal.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=Josefin+Sans:wght@200;300;400;500;600&family=Lora:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+/* ============================================================ VARIABLES */
+:root {
+  --jungle:    #1a2e1a;
+  --forest:    #2d4a2d;
+  --moss:      #3d6142;
+  --fern:      #5a8a5a;
+  --sage:      #8ab88a;
+  --mist:      #c8ddc8;
+  --terra:     #b5572a;
+  --clay:      #c96b3a;
+  --sand:      #e8c89a;
+  --ivory:     #f5f0e8;
+  --cream:     #faf7f2;
+  --white:     #ffffff;
+  --smoke:     rgba(250,247,242,0.06);
+  --smokeMid:  rgba(250,247,242,0.12);
+  --smokeHigh: rgba(250,247,242,0.22);
+  --line:      rgba(250,247,242,0.1);
+  --lineGold:  rgba(181,87,42,0.3);
+  --serif:     'Cormorant Garamond', Georgia, serif;
+  --sans:      'Josefin Sans', sans-serif;
+  --body:      'Lora', serif;
+  --trans:     all 0.38s cubic-bezier(0.4,0,0.2,1);
+}
+
+/* ============================================================ RESET */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:16px;scroll-behavior:smooth}
+body{background:var(--jungle);color:var(--cream);font-family:var(--sans);overflow-x:hidden;line-height:1.6;cursor:none}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{cursor:pointer}
+input,textarea,select{font-family:var(--sans);color:var(--cream);background:transparent;border:none;outline:none}
+input::placeholder,textarea::placeholder{color:rgba(250,247,242,0.3)}
+select option{background:var(--forest)}
+::-webkit-scrollbar{width:4px}
+::-webkit-scrollbar-track{background:var(--jungle)}
+::-webkit-scrollbar-thumb{background:var(--terra)}
+
+/* ============================================================ CURSOR */
+#cur-ring,#cur-dot{position:fixed;top:0;left:0;border-radius:50%;pointer-events:none;z-index:99999;transform:translate(-50%,-50%);will-change:transform}
+#cur-ring{width:38px;height:38px;border:1.5px solid rgba(181,87,42,0.5);transition:width .28s,height .28s,border-color .28s,background .28s}
+#cur-dot{width:6px;height:6px;background:var(--terra);transition:width .15s,height .15s}
+.hover-cur #cur-ring{width:54px;height:54px;border-color:var(--terra);background:rgba(181,87,42,0.08)}
+
+/* ============================================================ GRAIN */
+body::after{content:'';position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.025;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");background-repeat:repeat;background-size:128px}
+
+/* ============================================================ CANVAS */
+#bg-canvas{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;opacity:.5}
+
+/* ============================================================ LOADER */
+#loader{position:fixed;inset:0;z-index:10000;background:var(--jungle);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px;transition:opacity 1s,visibility 1s}
+#loader.out{opacity:0;visibility:hidden}
+.ld-leaf{font-size:52px;animation:leafSway 2s ease-in-out infinite}
+@keyframes leafSway{0%,100%{transform:rotate(-8deg) scale(1)}50%{transform:rotate(8deg) scale(1.1)}}
+.ld-brand{font-family:var(--serif);font-size:clamp(24px,5vw,42px);font-weight:300;letter-spacing:0.06em;color:var(--sand);font-style:italic}
+.ld-sub{font-family:var(--sans);font-size:10px;letter-spacing:.6em;text-transform:uppercase;color:rgba(250,247,242,.35)}
+.ld-devanagari{font-family:var(--serif);font-size:18px;color:var(--terra);letter-spacing:.1em;font-style:italic;opacity:.8}
+.ld-track{width:200px;height:1px;background:rgba(255,255,255,.07);position:relative;overflow:hidden}
+.ld-prog{position:absolute;top:0;left:0;height:100%;background:linear-gradient(90deg,var(--moss),var(--terra),var(--sand));width:0%;transition:width 1.8s cubic-bezier(.4,0,.2,1);box-shadow:0 0 14px var(--terra)}
+
+/* ============================================================ PAGE WIPE */
+#page-wipe{position:fixed;inset:0;z-index:600;display:grid;grid-template-columns:repeat(6,1fr);pointer-events:none}
+.wc{height:100%;background:var(--forest);transform:scaleY(0)}
+#page-wipe.wi .wc{animation:wIn .48s cubic-bezier(.77,0,.175,1) forwards}
+#page-wipe.wo .wc{animation:wOut .48s cubic-bezier(.77,0,.175,1) forwards}
+.wc:nth-child(1){animation-delay:0s!important}
+.wc:nth-child(2){animation-delay:.04s!important}
+.wc:nth-child(3){animation-delay:.08s!important}
+.wc:nth-child(4){animation-delay:.12s!important}
+.wc:nth-child(5){animation-delay:.16s!important}
+.wc:nth-child(6){animation-delay:.2s!important}
+@keyframes wIn{from{transform:scaleY(0);transform-origin:bottom}to{transform:scaleY(1);transform-origin:bottom}}
+@keyframes wOut{from{transform:scaleY(1);transform-origin:top}to{transform:scaleY(0);transform-origin:top}}
+
+/* ============================================================ NAV */
+#nav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;align-items:center;justify-content:space-between;padding:28px 60px;transition:var(--trans)}
+#nav.solid{padding:13px 60px;background:rgba(26,46,26,.95);backdrop-filter:blur(24px);border-bottom:1px solid var(--line)}
+.nav-logo{display:flex;align-items:center;gap:14px;cursor:pointer}
+.nav-logo-icon{font-size:28px}
+.nav-logo-text{font-family:var(--serif);font-size:24px;font-weight:400;color:var(--sand);letter-spacing:.02em;font-style:italic;text-shadow:0 0 30px rgba(232,200,154,.4);transition:var(--trans)}
+.nav-logo-text span{color:var(--terra)}
+.nav-logo:hover .nav-logo-text{text-shadow:0 0 50px rgba(232,200,154,.7)}
+.nav-links{display:flex;align-items:center;gap:2px}
+.nl{background:none;border:none;font-family:var(--sans);font-size:11px;font-weight:400;letter-spacing:.2em;text-transform:uppercase;color:rgba(250,247,242,.45);padding:9px 15px;transition:var(--trans);position:relative}
+.nl::after{content:'';position:absolute;bottom:4px;left:15px;right:15px;height:1px;background:var(--terra);transform:scaleX(0);transition:transform .3s}
+.nl:hover,.nl.active{color:var(--sand)}
+.nl:hover::after,.nl.active::after{transform:scaleX(1)}
+.nav-book{background:var(--terra);color:var(--cream);border:none;font-family:var(--sans);font-size:10px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;padding:11px 24px;transition:var(--trans);position:relative;overflow:hidden}
+.nav-book::before{content:'';position:absolute;inset:0;background:rgba(255,255,255,.15);transform:translateX(-100%);transition:transform .3s}
+.nav-book:hover::before{transform:translateX(0)}
+.nav-book:hover{background:var(--clay);box-shadow:0 0 28px rgba(181,87,42,.5)}
+.nav-ham{display:none;flex-direction:column;gap:5px;background:none;border:none;padding:4px}
+.nav-ham span{display:block;width:22px;height:1.5px;background:var(--sand);transition:var(--trans)}
+
+/* ============================================================ MOBILE MENU */
+#mob-menu{position:fixed;inset:0;z-index:800;background:rgba(26,46,26,.98);backdrop-filter:blur(20px);display:flex;flex-direction:column;align-items:center;justify-content:center;transform:translateX(100%);transition:transform .45s cubic-bezier(.77,0,.175,1)}
+#mob-menu.open{transform:translateX(0)}
+.mob-lnk{font-family:var(--serif);font-size:clamp(34px,7vw,60px);font-weight:300;font-style:italic;color:rgba(250,247,242,.35);background:none;border:none;padding:12px 40px;width:100%;text-align:center;border-bottom:1px solid rgba(255,255,255,.04);transition:var(--trans)}
+.mob-lnk:hover{color:var(--sand)}
+.mob-x{position:absolute;top:22px;right:44px;background:none;border:none;color:rgba(250,247,242,.4);font-size:26px;transition:var(--trans);line-height:1}
+.mob-x:hover{color:var(--terra)}
+
+/* ============================================================ PAGE SYSTEM */
+#pw{position:relative;z-index:10}
+.page{min-height:100vh;display:none;animation:pgIn .6s cubic-bezier(.4,0,.2,1) forwards}
+.page.active{display:block}
+@keyframes pgIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+
+/* ============================================================ COMMON */
+.wrap{max-width:1300px;margin:0 auto;padding:0 60px}
+.sec-label{font-family:var(--sans);font-size:10px;font-weight:500;letter-spacing:.52em;text-transform:uppercase;color:var(--terra);display:flex;align-items:center;gap:14px;margin-bottom:14px}
+.sec-label::before{content:'';display:block;width:28px;height:1px;background:var(--terra)}
+.sec-title{font-family:var(--serif);font-size:clamp(38px,5vw,78px);font-weight:300;line-height:.92;letter-spacing:-.01em}
+.sec-title em{color:var(--terra);font-style:italic}
+.sec-body{font-family:var(--body);font-size:17px;font-weight:400;font-style:italic;color:rgba(250,247,242,.6);line-height:1.85;max-width:520px}
+
+/* REVEAL */
+.rev{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}
+.rev.in{opacity:1;transform:translateY(0)}
+.rev-l{opacity:0;transform:translateX(-28px);transition:opacity .7s ease,transform .7s ease}
+.rev-l.in{opacity:1;transform:translateX(0)}
+.rev-r{opacity:0;transform:translateX(28px);transition:opacity .7s ease,transform .7s ease}
+.rev-r.in{opacity:1;transform:translateX(0)}
+
+/* BUTTONS */
+.btn-fill{display:inline-flex;align-items:center;gap:10px;background:var(--terra);color:var(--cream);border:none;font-family:var(--sans);font-size:10px;font-weight:600;letter-spacing:.24em;text-transform:uppercase;padding:14px 32px;transition:var(--trans);position:relative;overflow:hidden}
+.btn-fill::after{content:'';position:absolute;inset:0;background:rgba(255,255,255,.15);transform:translateX(-100%);transition:transform .3s}
+.btn-fill:hover::after{transform:translateX(0)}
+.btn-fill:hover{box-shadow:0 0 36px rgba(181,87,42,.5);transform:translateY(-2px)}
+.btn-line{display:inline-flex;align-items:center;gap:10px;background:transparent;border:1px solid rgba(250,247,242,.22);color:var(--cream);font-family:var(--sans);font-size:10px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;padding:13px 32px;transition:var(--trans)}
+.btn-line:hover{border-color:var(--terra);color:var(--sand);background:rgba(181,87,42,.07);transform:translateY(-2px)}
+.btn-ghost{display:inline-flex;align-items:center;gap:8px;background:transparent;border:none;color:var(--terra);font-family:var(--sans);font-size:10px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;padding:8px 0;border-bottom:1px solid rgba(181,87,42,.35);transition:var(--trans)}
+.btn-ghost:hover{border-bottom-color:var(--terra);gap:14px}
+
+/* GLASS */
+.glass{background:var(--smoke);border:1px solid var(--line);backdrop-filter:blur(14px);transition:var(--trans)}
+.glass:hover{border-color:var(--lineGold);background:rgba(250,247,242,.07)}
+
+/* TOAST */
+#toast{position:fixed;bottom:90px;left:50%;transform:translateX(-50%) translateY(16px);background:var(--terra);color:var(--cream);font-family:var(--sans);font-size:11px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;padding:13px 28px;z-index:9000;opacity:0;transition:all .35s;pointer-events:none;white-space:nowrap;box-shadow:0 6px 24px rgba(181,87,42,.4)}
+#toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+/* LIGHTBOX */
+#lb{position:fixed;inset:0;z-index:2000;background:rgba(26,46,26,.97);backdrop-filter:blur(24px);display:flex;align-items:center;justify-content:center;padding:40px;opacity:0;visibility:hidden;transition:opacity .4s,visibility .4s}
+#lb.open{opacity:1;visibility:visible}
+#lb-wrap{position:relative;max-width:980px;width:100%}
+#lb-img{width:100%;max-height:82vh;object-fit:contain;transform:scale(.9);transition:transform .45s cubic-bezier(.34,1.56,.64,1);box-shadow:0 40px 120px rgba(0,0,0,.8)}
+#lb.open #lb-img{transform:scale(1)}
+#lb-x{position:absolute;top:-16px;right:-16px;width:42px;height:42px;background:var(--terra);color:var(--cream);border:none;font-size:16px;font-weight:700;display:flex;align-items:center;justify-content:center;transition:var(--trans)}
+#lb-x:hover{background:var(--clay);transform:rotate(90deg)}
+.lb-arr{position:absolute;top:50%;transform:translateY(-50%);width:50px;height:50px;background:var(--smoke);border:1px solid var(--line);color:var(--cream);font-size:20px;display:flex;align-items:center;justify-content:center;transition:var(--trans);z-index:5}
+.lb-arr:hover{background:var(--terra);color:var(--cream);border-color:var(--terra)}
+#lb-prev{left:-68px}#lb-next{right:-68px}
+#lb-cap{position:absolute;bottom:-44px;left:0;right:0;text-align:center;font-family:var(--body);font-size:14px;font-style:italic;color:rgba(250,247,242,.5)}
+#lb-ctr{position:absolute;top:-44px;right:0;font-family:var(--sans);font-size:10px;letter-spacing:.3em;color:rgba(250,247,242,.3);text-transform:uppercase}
+
+/* MODAL */
+.modal{position:fixed;inset:0;z-index:1500;background:rgba(26,46,26,.95);backdrop-filter:blur(20px);display:flex;align-items:center;justify-content:center;padding:24px;opacity:0;visibility:hidden;transition:opacity .3s,visibility .3s}
+.modal.open{opacity:1;visibility:visible}
+.modal-box{background:var(--forest);border:1px solid var(--line);width:100%;max-width:560px;max-height:90vh;overflow-y:auto;transform:scale(.95) translateY(14px);transition:transform .35s cubic-bezier(.34,1.56,.64,1);scrollbar-width:thin;scrollbar-color:var(--moss) transparent}
+.modal.open .modal-box{transform:scale(1) translateY(0)}
+.modal-hd{padding:26px 30px 20px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between}
+.modal-ttl{font-family:var(--serif);font-size:26px;font-style:italic;font-weight:300}
+.modal-x{background:none;border:none;color:rgba(250,247,242,.4);font-size:18px;transition:var(--trans);line-height:1}
+.modal-x:hover{color:var(--terra);transform:rotate(90deg)}
+.modal-bd{padding:26px 30px 30px}
+
+/* FORM */
+.fg{margin-bottom:18px}
+.fl{display:block;font-family:var(--sans);font-size:9px;font-weight:600;letter-spacing:.38em;text-transform:uppercase;color:rgba(250,247,242,.35);margin-bottom:7px}
+.fi{width:100%;background:rgba(250,247,242,.04);border:1px solid var(--line);color:var(--cream);padding:12px 15px;font-family:var(--body);font-size:15px;transition:var(--trans)}
+.fi:focus{border-color:var(--terra);background:rgba(181,87,42,.05)}
+.fr{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.fs{width:100%;background:var(--terra);color:var(--cream);border:none;padding:15px;font-family:var(--sans);font-size:10px;font-weight:700;letter-spacing:.26em;text-transform:uppercase;margin-top:6px;transition:var(--trans)}
+.fs:hover{background:var(--clay);box-shadow:0 0 36px rgba(181,87,42,.4)}
+
+/* FAB */
+#fab{position:fixed;bottom:30px;right:30px;z-index:400;display:flex;flex-direction:column;align-items:flex-end;gap:10px}
+.fab-wa{width:52px;height:52px;border-radius:50%;background:#25d366;color:#fff;border:none;font-size:22px;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 22px rgba(37,211,102,.35);transition:var(--trans)}
+.fab-wa:hover{transform:scale(1.1) translateY(-2px);box-shadow:0 8px 32px rgba(37,211,102,.55)}
+.fab-book{background:var(--terra);color:var(--cream);border:none;font-family:var(--sans);font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:11px 16px;text-align:center;line-height:1.4;transition:var(--trans);box-shadow:0 4px 22px rgba(181,87,42,.3)}
+.fab-book:hover{background:var(--clay);transform:translateY(-2px)}
+
+/* ============================================================ HERO */
+#hero{min-height:100vh;position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:120px 40px 80px;overflow:hidden}
+.hero-video-bg{position:absolute;inset:0;z-index:0}
+.hero-video-bg video{width:100%;height:100%;object-fit:cover;filter:brightness(.3) saturate(1.4)}
+.hero-video-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,var(--jungle) 0%,rgba(26,46,26,.2) 40%,rgba(26,46,26,.5) 80%,var(--jungle) 100%)}
+.hero-content{position:relative;z-index:2}
+.hero-devanagari{font-family:var(--serif);font-size:14px;letter-spacing:.3em;color:rgba(232,200,154,.6);margin-bottom:18px;opacity:0;animation:hUp .7s 2.1s forwards}
+.hero-eye{font-family:var(--sans);font-size:10px;font-weight:400;letter-spacing:.58em;text-transform:uppercase;color:var(--terra);margin-bottom:22px;opacity:0;animation:hUp .7s 2.2s forwards}
+.hero-title{font-family:var(--serif);font-size:clamp(64px,13vw,172px);font-weight:300;font-style:italic;line-height:.88;letter-spacing:-.02em;margin-bottom:28px;opacity:0;animation:hUp .9s 2.35s forwards}
+.ht-hi{color:var(--sand);text-shadow:0 0 80px rgba(232,200,154,.4),0 0 160px rgba(232,200,154,.15)}
+.hero-dash{display:block;height:1px;width:80px;background:linear-gradient(90deg,transparent,var(--terra),transparent);margin:0 auto 24px;opacity:0;animation:hUp .5s 2.5s forwards}
+.hero-sub{font-family:var(--body);font-size:clamp(16px,2vw,22px);font-style:italic;color:rgba(250,247,242,.65);margin-bottom:10px;opacity:0;animation:hUp .7s 2.6s forwards}
+.hero-loc{font-family:var(--sans);font-size:10px;letter-spacing:.34em;text-transform:uppercase;color:rgba(250,247,242,.32);margin-bottom:52px;opacity:0;animation:hUp .7s 2.7s forwards}
+.hero-ctas{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;opacity:0;animation:hUp .7s 2.85s forwards}
+.hero-scroll{position:absolute;bottom:38px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;opacity:0;animation:hUp .6s 3.1s forwards}
+.hero-scroll span{font-family:var(--sans);font-size:9px;letter-spacing:.4em;text-transform:uppercase;color:rgba(250,247,242,.3)}
+.hsl{width:1px;height:48px;background:linear-gradient(var(--terra),transparent);animation:scrollPulse 2s ease-in-out infinite}
+@keyframes hUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+@keyframes scrollPulse{0%,100%{opacity:1;transform:scaleY(1);transform-origin:top}50%{opacity:.2;transform:scaleY(.4);transform-origin:top}}
+
+/* ============================================================ MOSAIC */
+.mosaic{display:grid;grid-template-columns:1.8fr 1fr 1fr;grid-template-rows:360px 260px;gap:3px}
+.mc{position:relative;overflow:hidden;cursor:zoom-in}
+.mc.sr{grid-row:span 2}
+.mc.sc{grid-column:span 2}
+.mc img{width:100%;height:100%;object-fit:cover;transition:transform .65s cubic-bezier(.25,.46,.45,.94)}
+.mc:hover img{transform:scale(1.07)}
+.mc-ov{position:absolute;inset:0;background:linear-gradient(180deg,transparent 30%,rgba(26,46,26,.9) 100%);opacity:0;transition:opacity .4s;display:flex;flex-direction:column;justify-content:flex-end;padding:22px}
+.mc:hover .mc-ov{opacity:1}
+.mc-name{font-family:var(--serif);font-size:20px;font-style:italic;color:var(--sand)}
+.mc-sub{font-family:var(--sans);font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:rgba(250,247,242,.5);margin-top:4px}
+.mc-zoom{position:absolute;top:12px;right:12px;background:rgba(26,46,26,.8);border:1px solid var(--lineGold);color:var(--terra);font-family:var(--sans);font-size:8px;letter-spacing:.18em;padding:4px 10px;text-transform:uppercase;opacity:0;transition:opacity .3s;backdrop-filter:blur(8px)}
+.mc:hover .mc-zoom{opacity:1}
+
+/* ============================================================ STATS */
+.stats-strip{background:var(--forest);border-top:1px solid var(--line);border-bottom:1px solid var(--line);display:grid;grid-template-columns:repeat(4,1fr)}
+.st{padding:46px 28px;text-align:center;border-right:1px solid var(--line);transition:var(--trans)}
+.st:last-child{border-right:none}
+.st:hover{background:rgba(181,87,42,.05)}
+.st-num{font-family:var(--serif);font-size:clamp(38px,4vw,62px);font-weight:300;color:var(--terra);line-height:1;margin-bottom:8px;font-style:italic}
+.st-lbl{font-family:var(--sans);font-size:9px;letter-spacing:.3em;text-transform:uppercase;color:rgba(250,247,242,.3)}
+
+/* ============================================================ ABOUT STRIP */
+.about-strip{padding:110px 0;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.about-img-side{position:relative;height:580px;overflow:hidden}
+.about-img-side img{width:100%;height:100%;object-fit:cover;transition:transform .65s ease}
+.about-img-side:hover img{transform:scale(1.04)}
+.about-frame{position:absolute;inset:16px;border:1px solid rgba(181,87,42,.2);pointer-events:none}
+.about-badge{position:absolute;bottom:0;right:30px;background:var(--terra);color:var(--cream);font-family:var(--sans);font-size:9px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;padding:10px 20px}
+.about-text .sec-body{margin:18px 0 30px}
+.feat-row{display:flex;align-items:flex-start;gap:18px;padding:18px 0;border-bottom:1px solid var(--line)}
+.feat-row:first-child{border-top:1px solid var(--line)}
+.feat-icon{width:44px;height:44px;flex-shrink:0;background:rgba(250,247,242,.04);border:1px solid var(--lineGold);display:flex;align-items:center;justify-content:center;font-size:18px}
+.feat-ttl{font-family:var(--sans);font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;margin-bottom:4px}
+.feat-desc{font-family:var(--body);font-size:14px;font-style:italic;color:rgba(250,247,242,.55);line-height:1.6}
+
+/* ============================================================ VIDEO BANNER */
+.video-banner{position:relative;height:72vh;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.video-banner video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.3) saturate(1.5)}
+.vb-overlay{position:absolute;inset:0;background:linear-gradient(180deg,var(--jungle) 0%,transparent 22%,transparent 78%,var(--jungle) 100%)}
+.vb-content{position:relative;z-index:2;text-align:center;padding:40px}
+.vb-content .sec-title{font-size:clamp(34px,5vw,74px)}
+.vb-content .sec-body{margin:20px auto 36px;text-align:center}
+
+/* ============================================================ ROOMS */
+.rooms-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--line);margin-top:50px}
+.room-card{background:var(--jungle);overflow:hidden;transition:var(--trans);cursor:pointer}
+.room-card:hover{transform:translateY(-5px);box-shadow:0 22px 56px rgba(0,0,0,.6);z-index:2}
+.room-img{height:280px;overflow:hidden;position:relative}
+.room-img img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
+.room-card:hover .room-img img{transform:scale(1.1)}
+.room-zoom{position:absolute;top:10px;right:10px;background:rgba(26,46,26,.85);border:1px solid var(--lineGold);color:var(--terra);font-family:var(--sans);font-size:8px;letter-spacing:.16em;padding:4px 10px;text-transform:uppercase;opacity:0;transition:opacity .3s}
+.room-card:hover .room-zoom{opacity:1}
+.room-badge{position:absolute;top:10px;left:10px;background:var(--terra);color:var(--cream);font-family:var(--sans);font-size:8px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;padding:4px 10px}
+.room-body{padding:24px}
+.room-name{font-family:var(--serif);font-size:22px;font-weight:400;font-style:italic;margin-bottom:6px}
+.room-desc{font-family:var(--body);font-size:13px;font-style:italic;color:rgba(250,247,242,.55);line-height:1.55;margin-bottom:14px}
+.room-amen{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:14px}
+.room-am{font-family:var(--sans);font-size:8px;letter-spacing:.12em;text-transform:uppercase;color:rgba(250,247,242,.35);background:var(--smoke);border:1px solid var(--line);padding:3px 8px}
+.room-foot{display:flex;align-items:center;justify-content:space-between;padding-top:14px;border-top:1px solid var(--line)}
+.room-price{font-family:var(--serif);font-size:26px;font-weight:300;font-style:italic;color:var(--terra)}
+.room-night{font-family:var(--sans);font-size:9px;letter-spacing:.2em;color:rgba(250,247,242,.3);text-transform:uppercase}
+
+/* ============================================================ RESTAURANT */
+.dining-section{padding:100px 0;background:var(--forest);position:relative;overflow:hidden}
+.dining-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 60% at 50% 50%,rgba(181,87,42,.06) 0%,transparent 70%);pointer-events:none}
+.dish-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:var(--line);margin-top:50px}
+.dish-card{background:var(--forest);overflow:hidden;transition:var(--trans)}
+.dish-card:hover{transform:translateY(-4px);box-shadow:0 18px 50px rgba(0,0,0,.5);z-index:2}
+.dish-img{height:220px;overflow:hidden}
+.dish-img img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
+.dish-card:hover .dish-img img{transform:scale(1.1)}
+.dish-body{padding:20px}
+.dish-name{font-family:var(--serif);font-size:19px;font-style:italic;margin-bottom:5px}
+.dish-desc{font-family:var(--body);font-size:13px;font-style:italic;color:rgba(250,247,242,.5);line-height:1.5;margin-bottom:12px}
+.dish-price{font-family:var(--serif);font-size:20px;font-weight:300;color:var(--terra)}
+
+/* ============================================================ ACTIVITIES */
+.act-section{padding:100px 0}
+.act-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--line);margin-top:50px}
+.act-card{background:var(--jungle);overflow:hidden;position:relative;cursor:pointer;transition:var(--trans)}
+.act-card:hover{z-index:2}
+.act-iw{height:320px;overflow:hidden;position:relative}
+.act-iw img{width:100%;height:100%;object-fit:cover;transition:transform .65s ease}
+.act-card:hover .act-iw img{transform:scale(1.08)}
+.act-ov{position:absolute;inset:0;background:linear-gradient(180deg,transparent 30%,rgba(26,46,26,.93) 100%);display:flex;flex-direction:column;justify-content:flex-end;padding:24px}
+.act-cat{font-family:var(--sans);font-size:9px;letter-spacing:.3em;text-transform:uppercase;color:var(--terra);margin-bottom:6px}
+.act-name{font-family:var(--serif);font-size:22px;font-style:italic;color:var(--sand)}
+.act-desc{font-family:var(--body);font-size:13px;font-style:italic;color:rgba(250,247,242,.55);margin-top:6px;line-height:1.5;max-height:0;overflow:hidden;transition:max-height .4s}
+.act-card:hover .act-desc{max-height:100px}
+
+/* ============================================================ GALLERY IG STRIP */
+.ig-strip{background:var(--forest);padding:80px 0}
+.ig-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:3px;margin-top:44px}
+.ig-cell{aspect-ratio:1;overflow:hidden;cursor:pointer;position:relative}
+.ig-cell img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
+.ig-cell:hover img{transform:scale(1.1)}
+.ig-ov{position:absolute;inset:0;background:rgba(26,46,26,.6);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .35s;font-size:22px}
+.ig-cell:hover .ig-ov{opacity:1}
+
+/* ============================================================ TESTIMONIALS */
+.testi-section{padding:96px 0;position:relative}
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--line);margin-top:50px}
+.testi-card{background:var(--jungle);padding:36px 30px;transition:var(--trans)}
+.testi-card:hover{background:rgba(181,87,42,.04)}
+.testi-stars{color:var(--terra);font-size:14px;margin-bottom:14px;letter-spacing:3px}
+.testi-quote{font-family:var(--body);font-size:15px;font-style:italic;color:rgba(250,247,242,.65);line-height:1.75;margin-bottom:18px}
+.testi-name{font-family:var(--sans);font-size:10px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--terra)}
+.testi-where{font-family:var(--sans);font-size:9px;letter-spacing:.2em;color:rgba(250,247,242,.3);margin-top:4px}
+
+/* ============================================================ FOOTER */
+#footer{background:var(--forest);border-top:1px solid var(--line);padding:80px 60px 42px}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1.2fr;gap:60px;margin-bottom:52px}
+.footer-logo{font-family:var(--serif);font-size:48px;font-weight:300;font-style:italic;color:var(--sand);margin-bottom:14px;text-shadow:0 0 40px rgba(232,200,154,.3)}
+.footer-tag{font-family:var(--body);font-size:15px;font-style:italic;color:rgba(250,247,242,.5);line-height:1.7;margin-bottom:18px}
+.footer-addr{font-family:var(--sans);font-size:12px;color:rgba(250,247,242,.3);line-height:2}
+.fcol-title{font-family:var(--sans);font-size:9px;font-weight:700;letter-spacing:.44em;text-transform:uppercase;color:var(--terra);margin-bottom:22px}
+.footer-links{list-style:none}
+.footer-links li{margin-bottom:11px}
+.footer-links a,.footer-links button{font-family:var(--body);font-size:14px;color:rgba(250,247,242,.35);background:none;border:none;padding:0;transition:color .3s;font-style:italic}
+.footer-links a:hover,.footer-links button:hover{color:var(--sand)}
+.fcr{display:flex;gap:11px;align-items:flex-start;margin-bottom:13px;font-family:var(--sans);font-size:12px;color:rgba(250,247,242,.35);line-height:1.6}
+.fcr a{color:rgba(250,247,242,.5);transition:color .3s}
+.fcr a:hover{color:var(--terra)}
+.footer-div{border:none;border-top:1px solid var(--line);margin:0 0 28px}
+.footer-btm{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px}
+.footer-copy{font-family:var(--sans);font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:rgba(250,247,242,.2)}
+.footer-sicons{display:flex;gap:8px}
+.footer-si{width:34px;height:34px;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:14px;transition:var(--trans);text-decoration:none}
+.footer-si:hover{border-color:var(--terra);background:rgba(181,87,42,.08)}
+
+/* ============================================================ INNER PAGES */
+.pg-hero{height:52vh;position:relative;display:flex;align-items:flex-end;padding-bottom:60px;overflow:hidden}
+.pg-hero-bg{position:absolute;inset:0}
+.pg-hero-bg img{width:100%;height:100%;object-fit:cover;filter:brightness(.28) saturate(1.3)}
+.pg-hero-bg video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.28) saturate(1.3)}
+.pg-hero-bg::after{content:'';position:absolute;bottom:0;left:0;right:0;height:55%;background:linear-gradient(transparent,var(--jungle))}
+
+/* ============================================================ CONTACT */
+.ct-main{padding:72px 0}
+.ct-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px}
+.ct-block{padding:24px;border:1px solid var(--line);margin-bottom:14px;position:relative;overflow:hidden;transition:var(--trans)}
+.ct-block:hover{border-color:var(--lineGold)}
+.ct-block::before{content:'';position:absolute;top:0;left:0;width:2px;height:100%;background:linear-gradient(var(--terra),transparent)}
+.ctb-lbl{font-family:var(--sans);font-size:9px;font-weight:700;letter-spacing:.38em;text-transform:uppercase;color:var(--terra);margin-bottom:10px}
+.ctb-val{font-family:var(--body);font-size:15px;color:rgba(250,247,242,.65);line-height:1.85;font-style:italic}
+.ctb-val a{color:rgba(250,247,242,.8);transition:color .3s}
+.ctb-val a:hover{color:var(--terra)}
+.hours-tbl{width:100%;border-collapse:collapse}
+.hours-tbl tr{border-bottom:1px solid var(--line)}
+.hours-tbl tr:last-child{border-bottom:none}
+.hours-tbl td{font-family:var(--body);font-size:14px;font-style:italic;padding:9px 0;color:rgba(250,247,242,.6)}
+.hours-tbl td:first-child{font-style:normal;color:rgba(250,247,242,.85);font-weight:500}
+.hours-tbl td:last-child{text-align:right}
+.wa-btn{display:flex;align-items:center;gap:13px;background:#25d366;color:#fff;padding:16px 22px;font-family:var(--sans);font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;transition:var(--trans);margin-top:7px;position:relative;overflow:hidden}
+.wa-btn::before{content:'';position:absolute;inset:0;background:rgba(255,255,255,.12);transform:translateX(-100%);transition:transform .3s}
+.wa-btn:hover::before{transform:translateX(0)}
+.wa-btn:hover{box-shadow:0 0 32px rgba(37,211,102,.4)}
+.social-row{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--line);margin:60px 0}
+.soc-card{background:var(--forest);padding:32px 20px;text-align:center;transition:var(--trans);text-decoration:none;color:var(--cream);display:block}
+.soc-card:hover{background:rgba(255,255,255,.02)}
+.soc-icon{font-size:32px;margin-bottom:12px}
+.soc-name{font-family:var(--sans);font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;margin-bottom:5px}
+.soc-handle{font-family:var(--sans);font-size:9px;letter-spacing:.1em;color:rgba(250,247,242,.3);margin-bottom:16px}
+.soc-follow{display:inline-block;border:1px solid;padding:6px 16px;font-family:var(--sans);font-size:9px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;transition:var(--trans)}
+.soc-fb .soc-follow{border-color:#1877f2;color:#1877f2}
+.soc-fb:hover .soc-follow{background:#1877f2;color:#fff}
+.soc-ig .soc-follow{border-color:#e1306c;color:#e1306c}
+.soc-ig:hover .soc-follow{background:#e1306c;color:#fff}
+.soc-tk .soc-follow{border-color:#ff0050;color:#ff0050}
+.soc-tk:hover .soc-follow{background:#ff0050;color:#fff}
+
+/* ============================================================ EVENTS */
+.ev-card{display:grid;grid-template-columns:380px 1fr;gap:0;background:var(--forest);border:1px solid var(--line);margin-bottom:22px;overflow:hidden;transition:var(--trans)}
+.ev-card:hover{border-color:var(--lineGold);box-shadow:0 14px 50px rgba(0,0,0,.45)}
+.ev-img{position:relative;overflow:hidden;min-height:280px}
+.ev-img img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
+.ev-card:hover .ev-img img{transform:scale(1.05)}
+.ev-date-badge{position:absolute;top:18px;left:18px;background:var(--terra);color:var(--cream);text-align:center;padding:9px 13px;min-width:58px}
+.evdb-day{font-family:var(--serif);font-size:30px;font-weight:400;line-height:1}
+.evdb-mon{font-family:var(--sans);font-size:9px;font-weight:700;letter-spacing:.2em;text-transform:uppercase}
+.ev-live{position:absolute;top:18px;right:18px;background:#c0392b;color:#fff;font-family:var(--sans);font-size:9px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;padding:4px 11px;animation:liveblink 1.8s ease-in-out infinite}
+@keyframes liveblink{0%,100%{opacity:1}50%{opacity:.4}}
+.ev-body{padding:32px 38px;display:flex;flex-direction:column;justify-content:center}
+.ev-cat{font-family:var(--sans);font-size:9px;font-weight:700;letter-spacing:.38em;text-transform:uppercase;color:var(--terra);margin-bottom:10px}
+.ev-title{font-family:var(--serif);font-size:clamp(22px,2.6vw,34px);font-weight:300;font-style:italic;line-height:1.1;margin-bottom:12px}
+.ev-desc{font-family:var(--body);font-size:15px;font-style:italic;color:rgba(250,247,242,.6);line-height:1.65;margin-bottom:20px}
+.ev-meta{display:flex;flex-wrap:wrap;gap:16px;margin-bottom:24px}
+.ev-mi{display:flex;align-items:center;gap:7px;font-family:var(--sans);font-size:9px;letter-spacing:.15em;text-transform:uppercase;color:rgba(250,247,242,.5)}
+.ev-acts{display:flex;gap:10px;flex-wrap:wrap}
+
+/* ============================================================ ADMIN */
+.admin-panel{background:rgba(45,74,45,.6);border:1px solid var(--line);margin:0 60px 72px;padding:38px}
+.admin-hd{display:flex;align-items:center;justify-content:space-between;margin-bottom:28px;padding-bottom:22px;border-bottom:1px solid var(--line)}
+.admin-title{font-family:var(--serif);font-size:24px;font-style:italic;font-weight:300}
+.admin-badge{background:var(--terra);color:var(--cream);font-family:var(--sans);font-size:8px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;padding:4px 11px}
+.admin-fg{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.upload-z{grid-column:1/-1;border:2px dashed var(--lineGold);padding:36px;text-align:center;transition:var(--trans);cursor:pointer;position:relative}
+.upload-z:hover{border-color:var(--terra);background:rgba(181,87,42,.04)}
+.upload-z input[type="file"]{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%}
+.upload-icon{font-size:32px;margin-bottom:10px}
+.upload-txt{font-family:var(--body);font-size:15px;font-style:italic;color:rgba(250,247,242,.6);margin-bottom:5px}
+.upload-sub{font-family:var(--sans);font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:rgba(250,247,242,.3)}
+.upload-prev{display:grid;grid-template-columns:repeat(auto-fill,minmax(90px,1fr));gap:7px;margin-top:14px}
+.prev-thumb{aspect-ratio:1;position:relative;overflow:hidden}
+.prev-thumb img{width:100%;height:100%;object-fit:cover}
+.prev-rm{position:absolute;top:4px;right:4px;width:20px;height:20px;background:rgba(26,46,26,.85);color:var(--cream);border:none;font-size:11px;display:flex;align-items:center;justify-content:center}
+.admin-ev-list{margin-top:36px}
+.admin-ev-row{display:grid;grid-template-columns:75px 1fr auto auto;gap:18px;align-items:center;padding:14px;border-bottom:1px solid var(--line);transition:var(--trans)}
+.admin-ev-row:hover{background:var(--smoke)}
+.admin-ev-thumb{width:75px;height:55px;overflow:hidden}
+.admin-ev-thumb img{width:100%;height:100%;object-fit:cover}
+.admin-ev-name{font-family:var(--serif);font-size:16px;font-style:italic}
+.admin-ev-date{font-family:var(--sans);font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:rgba(250,247,242,.3);margin-top:3px}
+.admin-ev-status{font-family:var(--sans);font-size:8px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;padding:3px 9px;border:1px solid}
+.s-upcoming{border-color:var(--terra);color:var(--terra)}
+.s-past{border-color:rgba(250,247,242,.3);color:rgba(250,247,242,.3)}
+.s-live{border-color:#c0392b;color:#c0392b;animation:liveblink 1.8s infinite}
+.admin-btns{display:flex;gap:7px}
+.abtn{background:none;border:1px solid var(--line);color:rgba(250,247,242,.35);padding:5px 12px;font-family:var(--sans);font-size:8px;letter-spacing:.14em;text-transform:uppercase;transition:var(--trans)}
+.abtn:hover{border-color:var(--terra);color:var(--terra)}
+.abtn.danger:hover{border-color:#c0392b;color:#c0392b}
+
+/* ============================================================ RESPONSIVE */
+@media(max-width:1100px){
+  .mosaic{grid-template-columns:1fr 1fr;grid-template-rows:300px 240px}
+  .mc.sr{grid-row:span 1}.mc.sc{grid-column:span 2}
+  .about-strip,.ct-grid{grid-template-columns:1fr;gap:48px}
+  .about-img-side{height:380px}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:36px}
+  .rooms-grid{grid-template-columns:1fr 1fr}
+  .testi-grid{grid-template-columns:1fr 1fr}
+  .act-grid{grid-template-columns:1fr 1fr}
+  .ig-grid{grid-template-columns:repeat(3,1fr)}
+  .stats-strip{grid-template-columns:1fr 1fr}
+  .ev-card{grid-template-columns:1fr}
+  .ev-img{min-height:240px;max-height:280px}
+  .admin-panel{margin:0 24px 60px}
+  .dish-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:768px){
+  #nav{padding:15px 20px}
+  #nav.solid{padding:10px 20px}
+  .nav-links,.nav-book{display:none}
+  .nav-ham{display:flex}
+  .wrap{padding:0 22px}
+  .mosaic{grid-template-columns:1fr;grid-template-rows:250px}
+  .mc.sc{grid-column:span 1}
+  .stats-strip{grid-template-columns:1fr 1fr}
+  .rooms-grid,.testi-grid,.act-grid{grid-template-columns:1fr}
+  .dish-grid{grid-template-columns:1fr}
+  .ig-grid{grid-template-columns:repeat(2,1fr)}
+  .social-row{grid-template-columns:1fr}
+  #footer{padding:52px 22px 36px}
+  .footer-grid{grid-template-columns:1fr;gap:28px}
+  .hero-ctas{flex-direction:column;align-items:center}
+  .admin-fg{grid-template-columns:1fr}
+  .admin-ev-row{grid-template-columns:60px 1fr}
+  .admin-ev-row .admin-ev-status,.admin-ev-row .admin-btns{display:none}
+  #lb-prev{left:8px}#lb-next{right:8px}
+}
+</style>
+</head>
+<body>
+
+<!-- LOADER -->
+<div id="loader">
+  <div class="ld-leaf">🌿</div>
+  <div class="ld-brand">Hotel Athithi</div>
+  <div class="ld-devanagari">अतिथि देवो भवः</div>
+  <div class="ld-sub">Bharatpur · Chitwan · Nepal</div>
+  <div class="ld-track"><div class="ld-prog" id="ldbar"></div></div>
+</div>
+
+<!-- Canvas -->
+<canvas id="bg-canvas"></canvas>
+
+<!-- Cursor -->
+<div id="cur-ring"></div>
+<div id="cur-dot"></div>
+
+<!-- Page Wipe -->
+<div id="page-wipe">
+  <div class="wc"></div><div class="wc"></div><div class="wc"></div>
+  <div class="wc"></div><div class="wc"></div><div class="wc"></div>
+</div>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="nav-logo" onclick="go('home')">
+    <span class="nav-logo-icon">🌿</span>
+    <span class="nav-logo-text">Athithi <span>Lodge</span></span>
+  </div>
+  <div class="nav-links">
+    <button class="nl active" id="nb-home" onclick="go('home')">Home</button>
+    <button class="nl" id="nb-rooms" onclick="go('rooms')">Rooms</button>
+    <button class="nl" id="nb-dining" onclick="go('dining')">Dining</button>
+    <button class="nl" id="nb-events" onclick="go('events')">Events</button>
+    <button class="nl" id="nb-about" onclick="go('about')">About</button>
+    <button class="nl" id="nb-contact" onclick="go('contact')">Contact</button>
+  </div>
+  <button class="nav-book" onclick="openModal()">Book Now</button>
+  <button class="nav-ham" id="navham" onclick="toggleMob()">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- Mobile Menu -->
+<div id="mob-menu">
+  <button class="mob-x" onclick="toggleMob()">✕</button>
+  <button class="mob-lnk" onclick="go('home');toggleMob()">Home</button>
+  <button class="mob-lnk" onclick="go('rooms');toggleMob()">Rooms & Lodge</button>
+  <button class="mob-lnk" onclick="go('dining');toggleMob()">Dining</button>
+  <button class="mob-lnk" onclick="go('events');toggleMob()">Events</button>
+  <button class="mob-lnk" onclick="go('about');toggleMob()">About</button>
+  <button class="mob-lnk" onclick="go('contact');toggleMob()">Contact</button>
+  <button class="mob-lnk" style="color:var(--terra)" onclick="openModal();toggleMob()">Book Now</button>
+</div>
+
+<div id="pw">
+
+<!-- ==================== HOME ==================== -->
+<div class="page active" id="page-home">
+
+  <section id="hero">
+    <div class="hero-video-bg">
+      <video autoplay muted loop playsinline poster="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1600&q=70">
+        <source src="https://www.pexels.com/download/video/3571264" type="video/mp4">
+      </video>
+    </div>
+    <div class="hero-content">
+      <div class="hero-devanagari">अतिथि देवो भवः — Guest is God</div>
+      <div class="hero-eye">Bharatpur, Chitwan · Gateway to the Jungle</div>
+      <h1 class="hero-title"><span class="ht-hi">Hotel</span><br>Athithi</h1>
+      <span class="hero-dash"></span>
+      <p class="hero-sub">Where every guest is welcomed as a divine blessing</p>
+      <div class="hero-loc">📍 Bharatpur-4, Chitwan &nbsp;·&nbsp; Open 24 Hours &nbsp;·&nbsp; Free WiFi & Parking</div>
+      <div class="hero-ctas">
+        <button class="btn-fill" onclick="go('rooms')">🏨 Explore Rooms</button>
+        <button class="btn-line" onclick="openModal()">Reserve Now →</button>
+      </div>
+    </div>
+    <div class="hero-scroll">
+      <div class="hsl"></div>
+      <span>Scroll</span>
+    </div>
+  </section>
+
+  <!-- MOSAIC -->
+  <div class="mosaic">
+    <div class="mc sr" onclick="openLB(0,mosaicImgs)">
+      <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=900&q=85" alt="Hotel Athithi" loading="lazy">
+      <div class="mc-ov"><div class="mc-name">Our Lodge</div><div class="mc-sub">Warm Nepali Hospitality</div></div>
+      <div class="mc-zoom">View</div>
+    </div>
+    <div class="mc" onclick="openLB(1,mosaicImgs)">
+      <img src="https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=600&q=85" alt="Deluxe Room" loading="lazy">
+      <div class="mc-ov"><div class="mc-name">Deluxe Rooms</div></div>
+      <div class="mc-zoom">View</div>
+    </div>
+    <div class="mc" onclick="openLB(2,mosaicImgs)">
+      <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=600&q=85" alt="Pool View" loading="lazy">
+      <div class="mc-ov"><div class="mc-name">Garden View</div></div>
+      <div class="mc-zoom">View</div>
+    </div>
+    <div class="mc" onclick="openLB(3,mosaicImgs)">
+      <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=600&q=85" alt="Restaurant" loading="lazy">
+      <div class="mc-ov"><div class="mc-name">Restaurant</div></div>
+      <div class="mc-zoom">View</div>
+    </div>
+    <div class="mc sc" onclick="openLB(4,mosaicImgs)">
+      <img src="https://images.unsplash.com/photo-1448375240586-882707db888b?w=900&q=85" alt="Chitwan Jungle" loading="lazy">
+      <div class="mc-ov"><div class="mc-name">Chitwan National Park</div><div class="mc-sub">UNESCO World Heritage Site — at your doorstep</div></div>
+      <div class="mc-zoom">View</div>
+    </div>
+  </div>
+
+  <!-- STATS -->
+  <div class="stats-strip">
+    <div class="st rev"><div class="st-num" data-count="15" data-suffix="+">0</div><div class="st-lbl">Elegant Rooms</div></div>
+    <div class="st rev"><div class="st-num" data-count="10" data-suffix="+">0</div><div class="st-lbl">Years Welcoming Guests</div></div>
+    <div class="st rev"><div class="st-num" data-count="98" data-suffix="%">0</div><div class="st-lbl">Guest Satisfaction</div></div>
+    <div class="st rev"><div class="st-num" data-count="500" data-suffix="+">0</div><div class="st-lbl">Happy Travellers</div></div>
+  </div>
+
+  <!-- ABOUT TEASER -->
+  <div class="wrap">
+    <div class="about-strip">
+      <div class="about-img-side rev-l">
+        <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=800&q=85" alt="Hotel Athithi Story" loading="lazy">
+        <div class="about-frame"></div>
+        <div class="about-badge">Bharatpur, Chitwan</div>
+      </div>
+      <div class="about-text rev-r">
+        <div class="sec-label">Our Philosophy</div>
+        <h2 class="sec-title">Where <em>Guests</em><br>become <em>God</em></h2>
+        <p class="sec-body" style="margin:18px 0 30px">Rooted in the ancient Sanskrit verse <em>"Atithi Devo Bhava"</em> — Guest is God — Hotel Athithi is Bharatpur's warm sanctuary. Nestled near the gateway to Chitwan National Park, we offer the perfect blend of Nepali comfort, cultural richness, and natural splendour.</p>
+        <div style="margin-top:8px">
+          <div class="feat-row">
+            <div class="feat-icon">🦏</div>
+            <div><div class="feat-ttl">Gateway to Chitwan</div><div class="feat-desc">Steps away from the UNESCO-listed Chitwan National Park. One-horned rhinos, Bengal tigers, and 500+ bird species await.</div></div>
+          </div>
+          <div class="feat-row">
+            <div class="feat-icon">🍽️</div>
+            <div><div class="feat-ttl">Restaurant & Bar</div><div class="feat-desc">Authentic Nepali cuisine and international dishes prepared with locally sourced ingredients, served with Terai warmth.</div></div>
+          </div>
+          <div class="feat-row">
+            <div class="feat-icon">🌿</div>
+            <div><div class="feat-ttl">Lush Garden & Terrace</div><div class="feat-desc">A tranquil rooftop café and garden terrace — the perfect escape for evening relaxation in the cool Chitwan air.</div></div>
+          </div>
+        </div>
+        <div style="margin-top:32px;display:flex;gap:12px;flex-wrap:wrap">
+          <button class="btn-fill" onclick="go('about')">Our Full Story</button>
+          <button class="btn-ghost" onclick="go('rooms')">View Rooms →</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- VIDEO BANNER -->
+  <div class="video-banner">
+    <video autoplay muted loop playsinline poster="https://images.unsplash.com/photo-1448375240586-882707db888b?w=1600&q=70">
+      <source src="https://www.pexels.com/download/video/3571264" type="video/mp4">
+    </video>
+    <div class="vb-overlay"></div>
+    <div class="vb-content">
+      <div class="sec-label" style="justify-content:center">Chitwan National Park</div>
+      <h2 class="sec-title rev" style="text-align:center;font-size:clamp(32px,4.5vw,68px)">The <em>wild</em> begins<br>at our doorstep</h2>
+      <p class="sec-body rev" style="text-align:center;margin:18px auto 32px">Asia's finest wildlife sanctuary — home to the Bengal tiger, one-horned rhinoceros, gharial crocodile, and over 500 bird species — awaits just minutes from Hotel Athithi.</p>
+      <button class="btn-fill rev" onclick="go('rooms')">Plan Your Stay</button>
+    </div>
+  </div>
+
+  <!-- ROOMS TEASER -->
+  <div style="padding:100px 0">
+    <div class="wrap">
+      <div style="display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:18px">
+        <div>
+          <div class="sec-label">Where You'll Rest</div>
+          <h2 class="sec-title rev">Our <em>rooms</em> & suites</h2>
+        </div>
+        <button class="btn-line rev" onclick="go('rooms')">All Accommodation →</button>
+      </div>
+      <div class="rooms-grid">
+        <div class="room-card rev" onclick="go('rooms')">
+          <div class="room-img">
+            <img src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=700&q=85" alt="Standard Room" loading="lazy">
+            <div class="room-zoom">View</div>
+            <div class="room-badge">Standard</div>
+          </div>
+          <div class="room-body">
+            <div class="room-name">Cosy Standard Room</div>
+            <div class="room-desc">Comfortable double room with garden view, en-suite bathroom, and all modern conveniences.</div>
+            <div class="room-amen"><span class="room-am">Free WiFi</span><span class="room-am">A/C</span><span class="room-am">TV</span><span class="room-am">Hot Water</span></div>
+            <div class="room-foot"><div><div class="room-price">NPR 3,500</div><div class="room-night">/ night</div></div><button class="btn-fill" style="padding:9px 18px;font-size:9px" onclick="openModal();event.stopPropagation()">Book</button></div>
+          </div>
+        </div>
+        <div class="room-card rev" style="transition-delay:.1s" onclick="go('rooms')">
+          <div class="room-img">
+            <img src="https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=700&q=85" alt="Deluxe Room" loading="lazy">
+            <div class="room-zoom">View</div>
+            <div class="room-badge" style="background:var(--moss)">Deluxe</div>
+          </div>
+          <div class="room-body">
+            <div class="room-name">Deluxe Garden View</div>
+            <div class="room-desc">Spacious room with lush garden-facing balcony, king-size bed, and premium furnishings.</div>
+            <div class="room-amen"><span class="room-am">Balcony</span><span class="room-am">King Bed</span><span class="room-am">Free WiFi</span><span class="room-am">Mini Bar</span></div>
+            <div class="room-foot"><div><div class="room-price">NPR 5,500</div><div class="room-night">/ night</div></div><button class="btn-fill" style="padding:9px 18px;font-size:9px" onclick="openModal();event.stopPropagation()">Book</button></div>
+          </div>
+        </div>
+        <div class="room-card rev" style="transition-delay:.2s" onclick="go('rooms')">
+          <div class="room-img">
+            <img src="https://images.unsplash.com/photo-1578683010236-d716f9a3f461?w=700&q=85" alt="Suite" loading="lazy">
+            <div class="room-zoom">View</div>
+            <div class="room-badge" style="background:var(--terra)">Suite</div>
+          </div>
+          <div class="room-body">
+            <div class="room-name">Jungle View Suite</div>
+            <div class="room-desc">Our finest accommodation — separate living area, panoramic terrace, and premium Nepali decor.</div>
+            <div class="room-amen"><span class="room-am">Terrace</span><span class="room-am">Living Room</span><span class="room-am">Bathtub</span><span class="room-am">Breakfast</span></div>
+            <div class="room-foot"><div><div class="room-price">NPR 8,500</div><div class="room-night">/ night</div></div><button class="btn-fill" style="padding:9px 18px;font-size:9px" onclick="openModal();event.stopPropagation()">Book</button></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ACTIVITIES -->
+  <div class="act-section" style="background:var(--forest)">
+    <div class="wrap">
+      <div style="text-align:center">
+        <div class="sec-label" style="justify-content:center">Experiences</div>
+        <h2 class="sec-title rev" style="text-align:center">Adventure <em>awaits</em></h2>
+        <p class="sec-body rev" style="text-align:center;margin:16px auto 0">From jungle safaris to riverside canoeing — Chitwan offers extraordinary encounters with nature.</p>
+      </div>
+      <div class="act-grid">
+        <div class="act-card rev" onclick="openLB(0,actImgs)">
+          <div class="act-iw"><img src="https://images.unsplash.com/photo-1548681528-6a5c45b66b42?w=700&q=85" alt="Jeep Safari" loading="lazy"></div>
+          <div class="act-ov">
+            <div class="act-cat">🚙 Adventure</div>
+            <div class="act-name">Jungle Jeep Safari</div>
+            <div class="act-desc">Track tigers and rhinos through Chitwan's dense forests with our expert naturalists.</div>
+          </div>
+        </div>
+        <div class="act-card rev" style="transition-delay:.1s" onclick="openLB(1,actImgs)">
+          <div class="act-iw"><img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=700&q=85" alt="Canoe" loading="lazy"></div>
+          <div class="act-ov">
+            <div class="act-cat">🛶 Water</div>
+            <div class="act-name">Rapti River Canoe</div>
+            <div class="act-desc">Glide along the sacred Rapti River at dawn — crocodiles and exotic birds at every bend.</div>
+          </div>
+        </div>
+        <div class="act-card rev" style="transition-delay:.2s" onclick="openLB(2,actImgs)">
+          <div class="act-iw"><img src="https://images.unsplash.com/photo-1502982720700-bfff97f2ecac?w=700&q=85" alt="Culture" loading="lazy"></div>
+          <div class="act-ov">
+            <div class="act-cat">🎭 Culture</div>
+            <div class="act-name">Tharu Cultural Show</div>
+            <div class="act-desc">Experience the vibrant traditional dances and heritage of the indigenous Tharu people of Chitwan.</div>
+          </div>
+        </div>
+        <div class="act-card rev" style="transition-delay:.3s" onclick="openLB(3,actImgs)">
+          <div class="act-iw"><img src="https://images.unsplash.com/photo-1501854140801-50d01698950b?w=700&q=85" alt="Bird Watch" loading="lazy"></div>
+          <div class="act-ov">
+            <div class="act-cat">🐦 Nature</div>
+            <div class="act-name">Bird Watching</div>
+            <div class="act-desc">Over 500 bird species including the Giant Hornbill, Bengal Florican, and rare migratory birds.</div>
+          </div>
+        </div>
+        <div class="act-card rev" style="transition-delay:.4s" onclick="openLB(4,actImgs)">
+          <div class="act-iw"><img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=700&q=85" alt="Nature Walk" loading="lazy"></div>
+          <div class="act-ov">
+            <div class="act-cat">🥾 Trekking</div>
+            <div class="act-name">Jungle Nature Walk</div>
+            <div class="act-desc">Guided foot walks through Chitwan's tall elephant grass and sal forest with naturalists.</div>
+          </div>
+        </div>
+        <div class="act-card rev" style="transition-delay:.5s" onclick="openLB(5,actImgs)">
+          <div class="act-iw"><img src="https://images.unsplash.com/photo-1540206395-68808572332f?w=700&q=85" alt="Elephant" loading="lazy"></div>
+          <div class="act-ov">
+            <div class="act-cat">🐘 Wildlife</div>
+            <div class="act-name">Elephant Breeding Centre</div>
+            <div class="act-desc">Visit the famous Elephant Breeding Centre — a once-in-a-lifetime encounter with gentle giants.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DINING TEASER -->
+  <div class="dining-section">
+    <div class="wrap">
+      <div style="display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:18px">
+        <div>
+          <div class="sec-label">Flavours of Nepal</div>
+          <h2 class="sec-title rev">Dine with <em>soul</em></h2>
+        </div>
+        <button class="btn-line rev" onclick="go('dining')">Full Menu →</button>
+      </div>
+      <div class="dish-grid">
+        <div class="dish-card rev" onclick="go('dining')">
+          <div class="dish-img"><img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=600&q=85" alt="Dal Bhat" loading="lazy"></div>
+          <div class="dish-body"><div class="dish-name">Traditional Dal Bhat</div><div class="dish-desc">The soul of Nepal — steamed rice, lentil soup, seasonal vegetables, and chutneys</div><div class="dish-price">NPR 350</div></div>
+        </div>
+        <div class="dish-card rev" style="transition-delay:.1s" onclick="go('dining')">
+          <div class="dish-img"><img src="https://images.unsplash.com/photo-1567188040759-fb8a883dc6d8?w=600&q=85" alt="Momos" loading="lazy"></div>
+          <div class="dish-body"><div class="dish-name">Handmade Momos</div><div class="dish-desc">Steamed or fried dumplings filled with spiced vegetables or buffalo meat</div><div class="dish-price">NPR 250</div></div>
+        </div>
+        <div class="dish-card rev" style="transition-delay:.2s" onclick="go('dining')">
+          <div class="dish-img"><img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=600&q=85" alt="Tharu Feast" loading="lazy"></div>
+          <div class="dish-body"><div class="dish-name">Tharu Set Meal</div><div class="dish-desc">Authentic Tharu tribal cuisine — wild greens, ghonghi snails, and fermented flavors</div><div class="dish-price">NPR 450</div></div>
+        </div>
+        <div class="dish-card rev" style="transition-delay:.3s" onclick="go('dining')">
+          <div class="dish-img"><img src="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=600&q=85" alt="International" loading="lazy"></div>
+          <div class="dish-body"><div class="dish-name">Continental Breakfast</div><div class="dish-desc">Fresh eggs, toast, seasonal fruits, juices — served 6AM to 10AM daily</div><div class="dish-price">NPR 400</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- INSTAGRAM STRIP -->
+  <div class="ig-strip">
+    <div class="wrap">
+      <div style="text-align:center">
+        <div class="sec-label" style="justify-content:center">@hotelatithichitwannepal</div>
+        <h2 class="sec-title rev" style="text-align:center;font-size:clamp(26px,3.5vw,54px)">Follow us on <em>Instagram</em></h2>
+      </div>
+      <div class="ig-grid">
+        <div class="ig-cell" onclick="openLB(0,igImgs)"><img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=400&q=80" alt="" loading="lazy"><div class="ig-ov">📸</div></div>
+        <div class="ig-cell" onclick="openLB(1,igImgs)"><img src="https://images.unsplash.com/photo-1448375240586-882707db888b?w=400&q=80" alt="" loading="lazy"><div class="ig-ov">📸</div></div>
+        <div class="ig-cell" onclick="openLB(2,igImgs)"><img src="https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=400&q=80" alt="" loading="lazy"><div class="ig-ov">📸</div></div>
+        <div class="ig-cell" onclick="openLB(3,igImgs)"><img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=400&q=80" alt="" loading="lazy"><div class="ig-ov">📸</div></div>
+        <div class="ig-cell" onclick="openLB(4,igImgs)"><img src="https://images.unsplash.com/photo-1548681528-6a5c45b66b42?w=400&q=80" alt="" loading="lazy"><div class="ig-ov">📸</div></div>
+        <div class="ig-cell" onclick="openLB(5,igImgs)"><img src="https://images.unsplash.com/photo-1502982720700-bfff97f2ecac?w=400&q=80" alt="" loading="lazy"><div class="ig-ov">📸</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TESTIMONIALS -->
+  <div class="testi-section">
+    <div class="wrap">
+      <div style="text-align:center">
+        <div class="sec-label" style="justify-content:center">Guest Stories</div>
+        <h2 class="sec-title rev" style="text-align:center">What our <em>guests</em> say</h2>
+      </div>
+      <div class="testi-grid">
+        <div class="testi-card rev">
+          <div class="testi-stars">★★★★★</div>
+          <div class="testi-quote">"The warmth and hospitality at Hotel Athithi was beyond anything we expected. True to the Nepali spirit of welcoming guests as gods. The rooms were spotless, food was delicious, and the staff arranged an incredible jeep safari for us."</div>
+          <div class="testi-name">Sarah & Thomas H.</div>
+          <div class="testi-where">Germany · Visited February 2025</div>
+        </div>
+        <div class="testi-card rev" style="transition-delay:.1s">
+          <div class="testi-stars">★★★★★</div>
+          <div class="testi-quote">"Perfect base for exploring Chitwan National Park. The hotel arranged our canoe ride, jungle walk, and Tharu cultural show all from one place. Breakfast was amazing — the masala chai and momos at sunrise were unforgettable."</div>
+          <div class="testi-name">Priya Sharma</div>
+          <div class="testi-where">Mumbai, India · Visited January 2025</div>
+        </div>
+        <div class="testi-card rev" style="transition-delay:.2s">
+          <div class="testi-stars">★★★★★</div>
+          <div class="testi-quote">"Great value, great location, great people. The Garden Suite has a stunning view of the greenery. We spotted a rhino family from the rooftop terrace at dusk! Staff were incredibly helpful in every way. Will come back every year."</div>
+          <div class="testi-name">James W.</div>
+          <div class="testi-where">United Kingdom · Visited December 2024</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer id="footer">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">Athithi</div>
+        <div class="footer-tag">Where every guest is welcomed as a divine blessing — in the heart of Bharatpur, at the edge of the wild Chitwan.</div>
+        <div class="footer-addr">Bharatpur-4, Chitwan District<br>Bagmati Province, Nepal<br>Near Bharatpur Airport & Chitwan National Park</div>
+      </div>
+      <div>
+        <div class="fcol-title">Navigate</div>
+        <ul class="footer-links">
+          <li><button onclick="go('home')">Home</button></li>
+          <li><button onclick="go('rooms')">Rooms & Lodge</button></li>
+          <li><button onclick="go('dining')">Restaurant</button></li>
+          <li><button onclick="go('events')">Events</button></li>
+          <li><button onclick="go('about')">About Us</button></li>
+          <li><button onclick="go('contact')">Contact</button></li>
+        </ul>
+      </div>
+      <div>
+        <div class="fcol-title">Experiences</div>
+        <ul class="footer-links">
+          <li><a>Jeep Safari</a></li>
+          <li><a>Canoe Ride</a></li>
+          <li><a>Bird Watching</a></li>
+          <li><a>Tharu Culture Show</a></li>
+          <li><a>Elephant Visit</a></li>
+          <li><a>Jungle Walk</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="fcol-title">Contact</div>
+        <div class="fcr">📞 <span><a href="tel:+9779855060601">+977 98-5506-0601</a><br><small style="opacity:.5;font-size:11px">WhatsApp Available</small></span></div>
+        <div class="fcr">📧 <span><a href="mailto:info@hotelatithichitwan.com">info@hotelatithichitwan.com</a></span></div>
+        <div class="fcr">🕔 <span>Front Desk: 24 Hours</span></div>
+        <div class="fcr">📍 <span>Bharatpur-4, Chitwan, Nepal</span></div>
+      </div>
+    </div>
+    <hr class="footer-div">
+    <div class="footer-btm">
+      <div class="footer-copy">© 2025 Hotel Athithi — Restaurant & Lodge, Bharatpur, Chitwan Nepal. All Rights Reserved.</div>
+      <div class="footer-sicons">
+        <a class="footer-si" href="https://www.facebook.com" target="_blank" title="Facebook">📘</a>
+        <a class="footer-si" href="https://www.instagram.com" target="_blank" title="Instagram">📸</a>
+        <a class="footer-si" href="https://www.tiktok.com" target="_blank" title="TikTok">🎵</a>
+        <a class="footer-si" href="https://wa.me/9779855060601?text=Hi!%20I'd%20like%20to%20enquire%20about%20Hotel%20Athithi" target="_blank" title="WhatsApp">💬</a>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<!-- ==================== ROOMS PAGE ==================== -->
+<div class="page" id="page-rooms">
+  <div class="pg-hero">
+    <div class="pg-hero-bg">
+      <img src="https://images.unsplash.com/photo-1578683010236-d716f9a3f461?w=1600&q=85" alt="Rooms">
+    </div>
+    <div class="wrap" style="position:relative;z-index:1;width:100%">
+      <div class="sec-label">Where You Sleep</div>
+      <h1 class="sec-title" style="font-size:clamp(40px,6vw,86px)">Rooms &<br><em>Suites</em></h1>
+    </div>
+  </div>
+
+  <div style="padding:72px 0">
+    <div class="wrap">
+      <div class="rooms-grid">
+        <div class="room-card rev">
+          <div class="room-img"><img src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=700&q=85" alt="Standard" loading="lazy"><div class="room-zoom">View</div><div class="room-badge">Standard</div></div>
+          <div class="room-body">
+            <div class="room-name">Standard Room</div>
+            <div class="room-desc">Clean, comfortable, and cosy — a restful retreat after a day exploring Chitwan. Queen bed, private bathroom, garden facing window.</div>
+            <div class="room-amen"><span class="room-am">Free WiFi</span><span class="room-am">A/C</span><span class="room-am">LED TV</span><span class="room-am">Hot Water</span><span class="room-am">Daily Housekeeping</span></div>
+            <div class="room-foot"><div><div class="room-price">NPR 3,500</div><div class="room-night">per night</div></div><button class="btn-fill" style="padding:10px 20px;font-size:9px" onclick="openModal()">Book Now</button></div>
+            <a href="https://wa.me/9779855060601?text=Hi!%20I'd%20like%20to%20book%20a%20Standard%20Room%20at%20Hotel%20Athithi%20Bharatpur." target="_blank" class="m-order" style="display:block;width:100%;margin-top:10px;background:transparent;border:1px solid var(--line);color:rgba(250,247,242,.35);font-family:var(--sans);font-size:9px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;padding:10px;transition:var(--trans);text-align:center;cursor:pointer" onmouseover="this.style.borderColor='var(--terra)';this.style.color='var(--terra)'" onmouseout="this.style.borderColor='';this.style.color=''">Book via WhatsApp →</a>
+          </div>
+        </div>
+        <div class="room-card rev" style="transition-delay:.1s">
+          <div class="room-img"><img src="https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=700&q=85" alt="Deluxe" loading="lazy"><div class="room-zoom">View</div><div class="room-badge" style="background:var(--moss)">Deluxe</div></div>
+          <div class="room-body">
+            <div class="room-name">Deluxe Garden Room</div>
+            <div class="room-desc">Spacious room with private balcony overlooking our lush gardens. King-size bed, premium linens, mini refrigerator.</div>
+            <div class="room-amen"><span class="room-am">Balcony</span><span class="room-am">King Bed</span><span class="room-am">Mini Bar</span><span class="room-am">Free WiFi</span><span class="room-am">Bathrobe</span></div>
+            <div class="room-foot"><div><div class="room-price">NPR 5,500</div><div class="room-night">per night</div></div><button class="btn-fill" style="padding:10px 20px;font-size:9px" onclick="openModal()">Book Now</button></div>
+            <a href="https://wa.me/9779855060601?text=Hi!%20I'd%20like%20to%20book%20a%20Deluxe%20Garden%20Room%20at%20Hotel%20Athithi%20Bharatpur." target="_blank" class="m-order" style="display:block;width:100%;margin-top:10px;background:transparent;border:1px solid var(--line);color:rgba(250,247,242,.35);font-family:var(--sans);font-size:9px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;padding:10px;transition:var(--trans);text-align:center;cursor:pointer" onmouseover="this.style.borderColor='var(--terra)';this.style.color='var(--terra)'" onmouseout="this.style.borderColor='';this.style.color=''">Book via WhatsApp →</a>
+          </div>
+        </div>
+        <div class="room-card rev" style="transition-delay:.2s">
+          <div class="room-img"><img src="https://images.unsplash.com/photo-1578683010236-d716f9a3f461?w=700&q=85" alt="Suite" loading="lazy"><div class="room-zoom">View</div><div class="room-badge">Suite</div></div>
+          <div class="room-body">
+            <div class="room-name">Jungle View Suite</div>
+            <div class="room-desc">Our finest suite — private terrace with jungle views, separate sitting area, luxury Nepali decor, and complimentary breakfast.</div>
+            <div class="room-amen"><span class="room-am">Private Terrace</span><span class="room-am">Living Room</span><span class="room-am">Breakfast</span><span class="room-am">Bathtub</span></div>
+            <div class="room-foot"><div><div class="room-price">NPR 8,500</div><div class="room-night">per night</div></div><button class="btn-fill" style="padding:10px 20px;font-size:9px" onclick="openModal()">Book Now</button></div>
+            <a href="https://wa.me/9779855060601?text=Hi!%20I'd%20like%20to%20book%20the%20Jungle%20View%20Suite%20at%20Hotel%20Athithi%20Bharatpur." target="_blank" class="m-order" style="display:block;width:100%;margin-top:10px;background:transparent;border:1px solid var(--line);color:rgba(250,247,242,.35);font-family:var(--sans);font-size:9px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;padding:10px;transition:var(--trans);text-align:center;cursor:pointer" onmouseover="this.style.borderColor='var(--terra)';this.style.color='var(--terra)'" onmouseout="this.style.borderColor='';this.style.color=''">Book via WhatsApp →</a>
+          </div>
+        </div>
+        <div class="room-card rev" style="transition-delay:.3s">
+          <div class="room-img"><img src="https://images.unsplash.com/photo-1566665797739-1674de7a421a?w=700&q=85" alt="Family Room" loading="lazy"><div class="room-zoom">View</div><div class="room-badge" style="background:var(--fern)">Family</div></div>
+          <div class="room-body">
+            <div class="room-name">Family Room</div>
+            <div class="room-desc">Perfect for families — one king bed and two single beds, spacious layout, connecting bathrooms, and inner courtyard view.</div>
+            <div class="room-amen"><span class="room-am">Multiple Beds</span><span class="room-am">Free WiFi</span><span class="room-am">A/C</span><span class="room-am">Kids Welcome</span></div>
+            <div class="room-foot"><div><div class="room-price">NPR 6,500</div><div class="room-night">per night</div></div><button class="btn-fill" style="padding:10px 20px;font-size:9px" onclick="openModal()">Book Now</button></div>
+            <a href="https://wa.me/9779855060601?text=Hi!%20I'd%20like%20to%20book%20a%20Family%20Room%20at%20Hotel%20Athithi%20Bharatpur." target="_blank" class="m-order" style="display:block;width:100%;margin-top:10px;background:transparent;border:1px solid var(--line);color:rgba(250,247,242,.35);font-family:var(--sans);font-size:9px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;padding:10px;transition:var(--trans);text-align:center;cursor:pointer" onmouseover="this.style.borderColor='var(--terra)';this.style.color='var(--terra)'" onmouseout="this.style.borderColor='';this.style.color=''">Book via WhatsApp →</a>
+          </div>
+        </div>
+        <div class="room-card rev" style="transition-delay:.4s">
+          <div class="room-img"><img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=700&q=85" alt="Rooftop Room" loading="lazy"><div class="room-zoom">View</div><div class="room-badge" style="background:var(--terra)">Premium</div></div>
+          <div class="room-body">
+            <div class="room-name">Premium Rooftop Room</div>
+            <div class="room-desc">Exclusive rooftop access, sunrise mountain views, premium bed with organic cotton linens. The ultimate Chitwan retreat.</div>
+            <div class="room-amen"><span class="room-am">Rooftop Access</span><span class="room-am">Mountain View</span><span class="room-am">Premium Linen</span><span class="room-am">Breakfast</span></div>
+            <div class="room-foot"><div><div class="room-price">NPR 7,500</div><div class="room-night">per night</div></div><button class="btn-fill" style="padding:10px 20px;font-size:9px" onclick="openModal()">Book Now</button></div>
+            <a href="https://wa.me/9779855060601?text=Hi!%20I'd%20like%20to%20book%20the%20Premium%20Rooftop%20Room%20at%20Hotel%20Athithi%20Bharatpur." target="_blank" class="m-order" style="display:block;width:100%;margin-top:10px;background:transparent;border:1px solid var(--line);color:rgba(250,247,242,.35);font-family:var(--sans);font-size:9px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;padding:10px;transition:var(--trans);text-align:center;cursor:pointer" onmouseover="this.style.borderColor='var(--terra)';this.style.color='var(--terra)'" onmouseout="this.style.borderColor='';this.style.color=''">Book via WhatsApp →</a>
+          </div>
+        </div>
+        <div class="room-card rev" style="transition-delay:.5s">
+          <div class="room-img"><img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=700&q=85" alt="Budget Room" loading="lazy"><div class="room-zoom">View</div><div class="room-badge" style="background:var(--moss)">Budget</div></div>
+          <div class="room-body">
+            <div class="room-name">Budget Single</div>
+            <div class="room-desc">Smart, tidy, and comfortable — great for solo travellers and backpackers exploring Chitwan on a budget.</div>
+            <div class="room-amen"><span class="room-am">Free WiFi</span><span class="room-am">Fan</span><span class="room-am">Hot Water</span><span class="room-am">Shared Terrace</span></div>
+            <div class="room-foot"><div><div class="room-price">NPR 1,800</div><div class="room-night">per night</div></div><button class="btn-fill" style="padding:10px 20px;font-size:9px" onclick="openModal()">Book Now</button></div>
+            <a href="https://wa.me/9779855060601?text=Hi!%20I'd%20like%20to%20book%20a%20Budget%20Single%20Room%20at%20Hotel%20Athithi%20Bharatpur." target="_blank" class="m-order" style="display:block;width:100%;margin-top:10px;background:transparent;border:1px solid var(--line);color:rgba(250,247,242,.35);font-family:var(--sans);font-size:9px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;padding:10px;transition:var(--trans);text-align:center;cursor:pointer" onmouseover="this.style.borderColor='var(--terra)';this.style.color='var(--terra)'" onmouseout="this.style.borderColor='';this.style.color=''">Book via WhatsApp →</a>
+          </div>
+        </div>
+      </div>
+      <div style="margin-top:48px;text-align:center;padding:32px;border:1px solid var(--line);background:var(--smoke)">
+        <div style="font-family:var(--serif);font-size:28px;font-style:italic;margin-bottom:10px;color:var(--sand)">Need a custom package?</div>
+        <p style="font-family:var(--body);font-size:15px;font-style:italic;color:rgba(250,247,242,.55);margin-bottom:22px">Honeymoon packages, family safari deals, group bookings, and corporate rates — we'll tailor the perfect Chitwan experience.</p>
+        <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+          <a class="btn-fill" href="https://wa.me/9779855060601?text=Hi!%20I'd%20like%20to%20know%20about%20special%20packages%20at%20Hotel%20Athithi%20Bharatpur." target="_blank">💬 WhatsApp for Custom Package</a>
+          <button class="btn-line" onclick="go('contact')">Contact Us</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer id="footer">
+    <div class="footer-grid">
+      <div><div class="footer-logo">Athithi</div><div class="footer-tag">Warm Nepali hospitality in the heart of Bharatpur.</div><div class="footer-addr">Bharatpur-4, Chitwan, Nepal</div></div>
+      <div><div class="fcol-title">Navigate</div><ul class="footer-links"><li><button onclick="go('home')">Home</button></li><li><button onclick="go('rooms')">Rooms</button></li><li><button onclick="go('dining')">Dining</button></li><li><button onclick="go('contact')">Contact</button></li></ul></div>
+      <div><div class="fcol-title">Rooms</div><ul class="footer-links"><li><a>Standard Room</a></li><li><a>Deluxe Garden</a></li><li><a>Jungle Suite</a></li><li><a>Family Room</a></li></ul></div>
+      <div><div class="fcol-title">Book Now</div><div class="fcr">📞 <span>+977 98-5506-0601</span></div><div class="fcr">🕔 <span>24-Hour Front Desk</span></div></div>
+    </div>
+    <hr class="footer-div"><div class="footer-btm"><div class="footer-copy">© 2025 Hotel Athithi</div><div class="footer-sicons"><a class="footer-si" href="#">📘</a><a class="footer-si" href="#">📸</a><a class="footer-si" href="https://wa.me/9779855060601">💬</a></div></div>
+  </footer>
+</div>
+
+<!-- ==================== DINING PAGE ==================== -->
+<div class="page" id="page-dining">
+  <div class="pg-hero">
+    <div class="pg-hero-bg">
+      <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1600&q=85" alt="Dining">
+    </div>
+    <div class="wrap" style="position:relative;z-index:1;width:100%">
+      <div class="sec-label">Taste of Nepal</div>
+      <h1 class="sec-title" style="font-size:clamp(40px,6vw,86px)">Our<br><em>Restaurant</em></h1>
+    </div>
+  </div>
+
+  <div style="padding:72px 0">
+    <div class="wrap">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;margin-bottom:72px">
+        <div class="rev-l">
+          <div class="sec-label">About Our Kitchen</div>
+          <h2 class="sec-title" style="font-size:clamp(28px,4vw,56px)">Flavours of <em>Chitwan</em></h2>
+          <p class="sec-body" style="margin:20px 0">Our kitchen celebrates the rich culinary traditions of the Terai lowlands and the broader Nepal — from the humble dal bhat that has sustained the Nepali people for centuries, to the exotic Tharu tribal recipes of the Chitwan heartland.</p>
+          <p class="sec-body">We source fresh produce from local Bharatpur markets daily — seasonal vegetables, fresh fish from the Rapti River, and the finest mountain spices. Our international menu caters to every palate.</p>
+          <div style="margin-top:28px;display:flex;gap:12px;flex-wrap:wrap">
+            <a href="https://wa.me/9779855060601?text=Hi!%20I'd%20like%20to%20reserve%20a%20table%20at%20Hotel%20Athithi%20Restaurant." target="_blank" class="btn-fill">Reserve a Table</a>
+          </div>
+        </div>
+        <div class="rev-r" style="position:relative;height:420px;overflow:hidden">
+          <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=800&q=85" alt="Nepali Food" loading="lazy" style="width:100%;height:100%;object-fit:cover">
+          <div style="position:absolute;bottom:0;right:30px;background:var(--terra);color:var(--cream);font-family:var(--sans);font-size:9px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;padding:10px 20px">Open 6 AM – 10 PM</div>
+        </div>
+      </div>
+
+      <div class="sec-label">Our Menu</div>
+      <h2 class="sec-title rev" style="margin-bottom:36px;font-size:clamp(28px,4vw,58px)">What we <em>serve</em></h2>
+
+      <div class="dish-grid" id="diningGrid">
+        <!-- Rendered by JS -->
+      </div>
+    </div>
+  </div>
+
+  <footer id="footer">
+    <div class="footer-grid">
+      <div><div class="footer-logo">Athithi</div><div class="footer-tag">Authentic Nepali cuisine and warm Terai hospitality.</div><div class="footer-addr">Bharatpur-4, Chitwan, Nepal</div></div>
+      <div><div class="fcol-title">Navigate</div><ul class="footer-links"><li><button onclick="go('home')">Home</button></li><li><button onclick="go('rooms')">Rooms</button></li><li><button onclick="go('dining')">Dining</button></li><li><button onclick="go('contact')">Contact</button></li></ul></div>
+      <div><div class="fcol-title">Dining</div><ul class="footer-links"><li><a>Nepali Specialties</a></li><li><a>Tharu Cuisine</a></li><li><a>International Menu</a></li><li><a>Rooftop Café</a></li></ul></div>
+      <div><div class="fcol-title">Reservations</div><div class="fcr">📞 <span>+977 98-5506-0601</span></div><div class="fcr">🕔 <span>Restaurant: 6AM – 10PM</span></div></div>
+    </div>
+    <hr class="footer-div"><div class="footer-btm"><div class="footer-copy">© 2025 Hotel Athithi</div><div class="footer-sicons"><a class="footer-si" href="#">📘</a><a class="footer-si" href="#">📸</a><a class="footer-si" href="https://wa.me/9779855060601">💬</a></div></div>
+  </footer>
+</div>
+
+<!-- ==================== EVENTS PAGE ==================== -->
+<div class="page" id="page-events">
+  <div class="pg-hero">
+    <div class="pg-hero-bg">
+      <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1600&q=85" alt="Events">
+    </div>
+    <div class="wrap" style="position:relative;z-index:1;width:100%">
+      <div class="sec-label">Gatherings & Celebrations</div>
+      <h1 class="sec-title" style="font-size:clamp(40px,6vw,86px)">Events &<br><em>Ceremonies</em></h1>
+    </div>
+  </div>
+
+  <div style="padding:48px 60px 18px;display:flex;gap:8px;flex-wrap:wrap">
+    <button class="evtab active" data-evf="all">All Events</button>
+    <button class="evtab" data-evf="upcoming">Upcoming</button>
+    <button class="evtab" data-evf="past">Past</button>
+    <button class="evtab" data-evf="wedding">Weddings</button>
+    <button class="evtab" data-evf="safari">Safari Nights</button>
+    <button class="evtab" data-evf="cultural">Cultural</button>
+  </div>
+
+  <div style="padding:0 60px 72px" id="upcomingCont">
+    <div style="padding-bottom:24px;padding-top:14px">
+      <div class="sec-label">Coming Up</div>
+      <h2 class="sec-title" style="font-size:clamp(26px,3.5vw,48px)">Upcoming <em>events</em></h2>
+    </div>
+    <div id="upcomingList"></div>
+  </div>
+
+  <!-- Admin Panel -->
+  <div class="admin-panel">
+    <div class="admin-hd">
+      <div class="admin-title">Event Management</div>
+      <span class="admin-badge">Admin Panel</span>
+    </div>
+    <form id="adminForm" onsubmit="submitEv(event)">
+      <div class="admin-fg">
+        <div class="fg"><label class="fl">Event Name *</label><input type="text" class="fi" id="evName" placeholder="e.g. Tharu Cultural Night" required></div>
+        <div class="fg"><label class="fl">Category</label><select class="fi" id="evCat"><option value="cultural">Cultural</option><option value="wedding">Wedding</option><option value="safari">Safari Night</option><option value="corporate">Corporate</option><option value="festival">Festival</option><option value="special">Special Event</option></select></div>
+        <div class="fg"><label class="fl">Date *</label><input type="date" class="fi" id="evDate" required></div>
+        <div class="fg"><label class="fl">Time</label><input type="text" class="fi" id="evTime" placeholder="e.g. 6:00 PM – 9:00 PM"></div>
+        <div class="fg" style="grid-column:1/-1"><label class="fl">Description</label><textarea class="fi" id="evDesc" rows="3" placeholder="Describe the event..."></textarea></div>
+        <div class="fg"><label class="fl">Entry / Price</label><input type="text" class="fi" id="evPrice" placeholder="Free / NPR 500"></div>
+        <div class="fg"><label class="fl">Status</label><select class="fi" id="evStatus"><option value="upcoming">Upcoming</option><option value="past">Past</option><option value="live">Live Now</option></select></div>
+        <div class="fg" style="grid-column:1/-1">
+          <label class="fl">Photos</label>
+          <div class="upload-z" id="uploadZ">
+            <input type="file" id="evImgs" accept="image/*" multiple onchange="prevImgs(event)">
+            <div class="upload-icon">📸</div>
+            <div class="upload-txt">Drop images or click to upload</div>
+            <div class="upload-sub">JPG, PNG, WEBP · Multiple files</div>
+          </div>
+          <div class="upload-prev" id="imgPrev"></div>
+        </div>
+      </div>
+      <div style="display:flex;gap:10px;margin-top:6px">
+        <button type="submit" class="fs" style="max-width:220px">Add Event</button>
+        <button type="button" class="btn-line" onclick="clearEvForm()" style="padding:12px 24px">Clear</button>
+      </div>
+    </form>
+    <div style="margin-top:32px">
+      <div style="padding:13px 0 17px;border-bottom:1px solid var(--line);margin-bottom:3px"><span style="font-family:var(--sans);font-size:9px;letter-spacing:.35em;text-transform:uppercase;color:rgba(250,247,242,.28)">Manage Events</span></div>
+      <div id="adminEvRows"></div>
+    </div>
+  </div>
+
+  <footer id="footer">
+    <div class="footer-grid">
+      <div><div class="footer-logo">Athithi</div><div class="footer-tag">Every celebration deserves a jungle-kissed backdrop.</div><div class="footer-addr">Bharatpur-4, Chitwan, Nepal</div></div>
+      <div><div class="fcol-title">Navigate</div><ul class="footer-links"><li><button onclick="go('home')">Home</button></li><li><button onclick="go('rooms')">Rooms</button></li><li><button onclick="go('events')">Events</button></li><li><button onclick="go('contact')">Contact</button></li></ul></div>
+      <div><div class="fcol-title">Events</div><ul class="footer-links"><li><a>Weddings</a></li><li><a>Corporate Events</a></li><li><a>Safari Nights</a></li><li><a>Tharu Cultural Shows</a></li></ul></div>
+      <div><div class="fcol-title">Contact</div><div class="fcr">📞 <span>+977 98-5506-0601</span></div></div>
+    </div>
+    <hr class="footer-div"><div class="footer-btm"><div class="footer-copy">© 2025 Hotel Athithi</div><div class="footer-sicons"><a class="footer-si" href="#">📘</a><a class="footer-si" href="#">📸</a><a class="footer-si" href="https://wa.me/9779855060601">💬</a></div></div>
+  </footer>
+</div>
+
+<!-- ==================== ABOUT PAGE ==================== -->
+<div class="page" id="page-about">
+  <div class="pg-hero">
+    <div class="pg-hero-bg">
+      <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=1600&q=85" alt="About">
+    </div>
+    <div class="wrap" style="position:relative;z-index:1;width:100%">
+      <div class="sec-label">Our Story</div>
+      <h1 class="sec-title" style="font-size:clamp(40px,6vw,86px)">The heart of <em>Athithi</em></h1>
+    </div>
+  </div>
+
+  <div style="padding:96px 0">
+    <div class="wrap">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:76px;align-items:start">
+        <div class="rev-l">
+          <div class="sec-label">Our Journey</div>
+          <h2 class="sec-title" style="font-size:clamp(28px,3.8vw,58px);margin-bottom:28px">Rooted in <em>Nepal's</em> warmth</h2>
+          <p style="font-family:var(--body);font-size:16px;color:rgba(250,247,242,.65);line-height:1.9;margin-bottom:18px"><strong style="color:var(--cream)">Hotel Athithi takes its name from one of the world's most sacred hospitality traditions.</strong> "Atithi Devo Bhava" — a Sanskrit teaching from the ancient Hindu texts — declares that the guest is equivalent to God. This is not merely a marketing phrase for us; it is the foundation of everything we do.</p>
+          <p style="font-family:var(--body);font-size:16px;color:rgba(250,247,242,.65);line-height:1.9;margin-bottom:18px">Situated in <strong style="color:var(--cream)">Bharatpur, the gateway city to Chitwan National Park</strong>, Hotel Athithi has welcomed travellers from across Nepal and the world — backpackers, families, honeymooners, wildlife researchers, and corporate guests alike — all treated with the same genuine warmth.</p>
+          <p style="font-family:var(--body);font-size:16px;color:rgba(250,247,242,.65);line-height:1.9;margin-bottom:18px">Our rooftop café, restaurant, lodge accommodation, and event spaces are woven together by a single thread: <strong style="color:var(--cream)">authentic Nepali hospitality</strong> that makes every guest feel genuinely at home in the Terai heartland.</p>
+          <p style="font-family:var(--body);font-size:16px;color:rgba(250,247,242,.65);line-height:1.9">We are close to Harihar Temple, Bis Hazari Lake, the Elephant Breeding Centre, and Chitwan National Park's main entrances. <strong style="color:var(--cream)">Adventure and culture — both at your fingertips.</strong></p>
+          <div style="margin-top:32px;display:flex;gap:12px;flex-wrap:wrap">
+            <button class="btn-fill" onclick="openModal()">Stay With Us</button>
+            <button class="btn-ghost" onclick="go('contact')">Get in Touch →</button>
+          </div>
+        </div>
+        <div class="rev-r" style="position:relative">
+          <div style="width:100%;height:480px;overflow:hidden;cursor:zoom-in" onclick="openLB(0,aboutGal)">
+            <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&q=85" alt="About" loading="lazy" style="width:100%;height:100%;object-fit:cover;transition:transform .65s ease" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+          </div>
+          <div style="position:absolute;bottom:-22px;left:-22px;width:170px;height:170px;overflow:hidden;border:4px solid var(--jungle)">
+            <img src="https://images.unsplash.com/photo-1448375240586-882707db888b?w=300&q=85" alt="Chitwan" loading="lazy" style="width:100%;height:100%;object-fit:cover">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- VALUES -->
+  <div style="padding:72px 0;background:var(--forest)">
+    <div class="wrap">
+      <div style="text-align:center">
+        <div class="sec-label" style="justify-content:center">What We Stand For</div>
+        <h2 class="sec-title rev" style="text-align:center;font-size:clamp(28px,3.8vw,62px)">Our <em>values</em></h2>
+      </div>
+      <div class="testi-grid" style="margin-top:48px">
+        <div class="testi-card rev"><div style="font-size:32px;margin-bottom:14px">🙏</div><div style="font-family:var(--sans);font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;margin-bottom:10px">Atithi Devo Bhava</div><div class="testi-quote">"Guest is God" — this ancient Sanskrit teaching is our operating principle. Every guest receives our deepest respect, care, and attention.</div></div>
+        <div class="testi-card rev" style="transition-delay:.1s"><div style="font-size:32px;margin-bottom:14px">🌿</div><div style="font-family:var(--sans);font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;margin-bottom:10px">Local & Sustainable</div><div class="testi-quote">We source from local Bharatpur farmers, reduce waste, and support conservation efforts in and around Chitwan National Park.</div></div>
+        <div class="testi-card rev" style="transition-delay:.2s"><div style="font-size:32px;margin-bottom:14px">🦏</div><div style="font-family:var(--sans);font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;margin-bottom:10px">Wildlife Conservation</div><div class="testi-quote">We actively support and promote responsible wildlife tourism, and donate a portion of proceeds to Chitwan conservation programmes.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- GALLERY -->
+  <div style="padding:72px 0">
+    <div class="wrap">
+      <div class="sec-label">Captured Moments</div>
+      <h2 class="sec-title rev">Life at <em>Athithi</em></h2>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:repeat(2,210px);gap:3px;margin-top:44px">
+        <div style="grid-column:span 2;overflow:hidden;cursor:zoom-in;position:relative" onclick="openLB(0,aboutGal)">
+          <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=900&q=85" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;transition:transform .6s ease" onmouseover="this.style.transform='scale(1.07)'" onmouseout="this.style.transform='scale(1)'">
+          <div style="position:absolute;inset:0;background:rgba(26,46,26,.5);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .35s;font-size:24px" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0'">🔍</div>
+        </div>
+        <div style="overflow:hidden;cursor:zoom-in;position:relative" onclick="openLB(1,aboutGal)"><img src="https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=500&q=85" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;transition:transform .6s ease" onmouseover="this.style.transform='scale(1.08)'" onmouseout="this.style.transform='scale(1)'"></div>
+        <div style="overflow:hidden;cursor:zoom-in;position:relative" onclick="openLB(2,aboutGal)"><img src="https://images.unsplash.com/photo-1448375240586-882707db888b?w=500&q=85" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;transition:transform .6s ease" onmouseover="this.style.transform='scale(1.08)'" onmouseout="this.style.transform='scale(1)'"></div>
+        <div style="overflow:hidden;cursor:zoom-in;position:relative" onclick="openLB(3,aboutGal)"><img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=500&q=85" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;transition:transform .6s ease" onmouseover="this.style.transform='scale(1.08)'" onmouseout="this.style.transform='scale(1)'"></div>
+        <div style="overflow:hidden;cursor:zoom-in;position:relative" onclick="openLB(4,aboutGal)"><img src="https://images.unsplash.com/photo-1548681528-6a5c45b66b42?w=500&q=85" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;transition:transform .6s ease" onmouseover="this.style.transform='scale(1.08)'" onmouseout="this.style.transform='scale(1)'"></div>
+        <div style="grid-column:span 2;overflow:hidden;cursor:zoom-in;position:relative" onclick="openLB(5,aboutGal)"><img src="https://images.unsplash.com/photo-1502982720700-bfff97f2ecac?w=900&q=85" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;transition:transform .6s ease" onmouseover="this.style.transform='scale(1.07)'" onmouseout="this.style.transform='scale(1)'"></div>
+      </div>
+    </div>
+  </div>
+
+  <footer id="footer">
+    <div class="footer-grid">
+      <div><div class="footer-logo">Athithi</div><div class="footer-tag">Nepal's welcoming heart — Bharatpur, Chitwan.</div><div class="footer-addr">Bharatpur-4, Chitwan, Nepal</div></div>
+      <div><div class="fcol-title">Navigate</div><ul class="footer-links"><li><button onclick="go('home')">Home</button></li><li><button onclick="go('rooms')">Rooms</button></li><li><button onclick="go('dining')">Dining</button></li><li><button onclick="go('contact')">Contact</button></li></ul></div>
+      <div><div class="fcol-title">Story</div><ul class="footer-links"><li><a>Our Heritage</a></li><li><a>Chitwan Conservation</a></li><li><a>Local Community</a></li><li><a>Sustainability</a></li></ul></div>
+      <div><div class="fcol-title">Contact</div><div class="fcr">📞 <span>+977 98-5506-0601</span></div><div class="fcr">🕔 <span>24-Hour Front Desk</span></div></div>
+    </div>
+    <hr class="footer-div"><div class="footer-btm"><div class="footer-copy">© 2025 Hotel Athithi</div><div class="footer-sicons"><a class="footer-si" href="#">📘</a><a class="footer-si" href="#">📸</a><a class="footer-si" href="https://wa.me/9779855060601">💬</a></div></div>
+  </footer>
+</div>
+
+<!-- ==================== CONTACT PAGE ==================== -->
+<div class="page" id="page-contact">
+  <div class="pg-hero">
+    <div class="pg-hero-bg">
+      <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=1600&q=85" alt="Contact">
+    </div>
+    <div class="wrap" style="position:relative;z-index:1;width:100%">
+      <div class="sec-label">Come Stay With Us</div>
+      <h1 class="sec-title" style="font-size:clamp(40px,6vw,86px)">Your room<br>is <em>waiting</em></h1>
+    </div>
+  </div>
+
+  <div class="ct-main">
+    <div class="wrap">
+      <div class="ct-grid">
+        <div>
+          <div class="ct-block rev">
+            <div class="ctb-lbl">📍 Find Us</div>
+            <div class="ctb-val">Hotel Athithi — Restaurant & Lodge<br>Bharatpur-4, Chitwan District<br>Bagmati Province, Nepal<br><br>
+              Near Bharatpur Airport (2 km)<br>Gateway to Chitwan National Park<br><br>
+              <a href="https://www.google.com/maps/search/Hotel+Athithi+Bharatpur+Nepal" target="_blank" style="color:var(--terra);font-family:var(--sans);font-size:10px;letter-spacing:.2em;text-transform:uppercase">Get Directions →</a>
+            </div>
+          </div>
+          <div class="ct-block rev">
+            <div class="ctb-lbl">🕔 Opening Hours</div>
+            <div class="ctb-val">
+              <table class="hours-tbl">
+                <tr><td>Front Desk</td><td>24 Hours, 7 Days</td></tr>
+                <tr><td>Restaurant</td><td>6:00 AM – 10:00 PM</td></tr>
+                <tr><td>Rooftop Café</td><td>7:00 AM – 9:00 PM</td></tr>
+                <tr><td>Bar & Lounge</td><td>11:00 AM – 10:00 PM</td></tr>
+                <tr><td>Safaris (Pickup)</td><td>5:30 AM / 3:00 PM</td></tr>
+              </table>
+            </div>
+          </div>
+          <div class="ct-block rev">
+            <div class="ctb-lbl">📞 Contact Us</div>
+            <div class="ctb-val">
+              <a href="tel:+9779855060601">+977 98-5506-0601</a><br>
+              <a href="tel:+97756520100">+977 056-520100</a><br>
+              <a href="mailto:info@hotelatithichitwan.com">info@hotelatithichitwan.com</a><br><br>
+              Fastest response via WhatsApp:
+            </div>
+            <a class="wa-btn" href="https://wa.me/9779855060601?text=Namaste!%20I'd%20like%20to%20enquire%20about%20Hotel%20Athithi%20Bharatpur." target="_blank">
+              💬 &nbsp; WhatsApp — Instant Reply
+            </a>
+          </div>
+          <div class="ct-block rev">
+            <div class="ctb-lbl">✈️ Getting Here</div>
+            <div class="ctb-val">
+              <strong style="color:var(--cream)">By Air:</strong> Bharatpur Airport — 2 km away. Direct flights from Kathmandu (25 min).<br><br>
+              <strong style="color:var(--cream)">By Road:</strong> 4–5 hrs from Kathmandu by bus/car via Prithvi Highway. Tourist buses available daily.<br><br>
+              <strong style="color:var(--cream)">Airport Transfer:</strong> We arrange complimentary pickup — just WhatsApp us your flight details.
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div style="margin-bottom:28px">
+            <div class="sec-label">Make a Reservation</div>
+            <h2 class="sec-title rev" style="font-size:clamp(26px,3.5vw,48px)">Book your <em>stay</em></h2>
+          </div>
+          <form onsubmit="handleRes(event)">
+            <div class="fg"><label class="fl">Full Name *</label><input type="text" class="fi" placeholder="Your full name" required></div>
+            <div class="fr">
+              <div class="fg"><label class="fl">Phone / WhatsApp *</label><input type="tel" class="fi" placeholder="+977 98..." required></div>
+              <div class="fg"><label class="fl">Email</label><input type="email" class="fi" placeholder="your@email.com"></div>
+            </div>
+            <div class="fr">
+              <div class="fg"><label class="fl">Check-in Date *</label><input type="date" class="fi" required></div>
+              <div class="fg"><label class="fl">Check-out Date *</label><input type="date" class="fi" required></div>
+            </div>
+            <div class="fr">
+              <div class="fg"><label class="fl">Room Type</label>
+                <select class="fi">
+                  <option value="">Select Room</option>
+                  <option>Standard Room — NPR 3,500</option>
+                  <option>Deluxe Garden Room — NPR 5,500</option>
+                  <option>Family Room — NPR 6,500</option>
+                  <option>Premium Rooftop Room — NPR 7,500</option>
+                  <option>Jungle View Suite — NPR 8,500</option>
+                  <option>Budget Single — NPR 1,800</option>
+                </select>
+              </div>
+              <div class="fg"><label class="fl">Guests</label>
+                <select class="fi">
+                  <option>1 Guest</option><option>2 Guests</option><option>3 Guests</option>
+                  <option>4 Guests</option><option>5+ Guests</option>
+                </select>
+              </div>
+            </div>
+            <div class="fg"><label class="fl">Activities Interested In</label>
+              <select class="fi" multiple style="height:auto;padding:10px">
+                <option>Jeep Safari — Chitwan National Park</option>
+                <option>Canoe Ride — Rapti River</option>
+                <option>Bird Watching Tour</option>
+                <option>Tharu Cultural Show</option>
+                <option>Jungle Nature Walk</option>
+                <option>Elephant Breeding Centre Visit</option>
+              </select>
+            </div>
+            <div class="fg"><label class="fl">Special Requests</label><textarea class="fi" rows="3" placeholder="Dietary needs, occasion, transport..."></textarea></div>
+            <button type="submit" class="fs">Send Booking Request</button>
+            <div style="margin-top:12px;text-align:center">
+              <span style="font-family:var(--sans);font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:rgba(250,247,242,.3)">Or book instantly via</span>
+              <a href="https://wa.me/9779855060601?text=Namaste!%20I'd%20like%20to%20make%20a%20booking%20at%20Hotel%20Athithi%20Bharatpur.%20Please%20let%20me%20know%20availability." target="_blank" style="display:flex;align-items:center;justify-content:center;gap:10px;background:#25d366;color:#fff;padding:13px;margin-top:8px;font-family:var(--sans);font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;transition:var(--trans)" onmouseover="this.style.boxShadow='0 0 32px rgba(37,211,102,.4)'" onmouseout="this.style.boxShadow=''">💬 Book via WhatsApp — Instant Confirmation</a>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <div class="social-row">
+        <a href="https://www.facebook.com" class="soc-card soc-fb" target="_blank">
+          <div class="soc-icon">📘</div><div class="soc-name">Facebook</div><div class="soc-handle">@hotelatithichitwan</div><div class="soc-follow">Like & Follow</div>
+        </a>
+        <a href="https://www.instagram.com" class="soc-card soc-ig" target="_blank">
+          <div class="soc-icon">📸</div><div class="soc-name">Instagram</div><div class="soc-handle">@hotelatithichitwannepal</div><div class="soc-follow">Follow Us</div>
+        </a>
+        <a href="https://www.tiktok.com" class="soc-card soc-tk" target="_blank">
+          <div class="soc-icon">🎵</div><div class="soc-name">TikTok</div><div class="soc-handle">@hotelatithibharatpur</div><div class="soc-follow">Follow</div>
+        </a>
+      </div>
+
+      <!-- MAP EMBED -->
+      <div style="margin-bottom:60px">
+        <div class="sec-label">Find Us</div>
+        <h2 class="sec-title rev" style="font-size:clamp(24px,3vw,44px);margin-bottom:20px">We're <em>here</em></h2>
+        <div style="width:100%;height:360px;border:1px solid var(--line);overflow:hidden;position:relative">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d113834.58483671836!2d84.34786954101562!3d27.671697099999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3994fb52d4e2acbf%3A0x4f1d74b39fd56df5!2sBharatpur%2C%20Nepal!5e0!3m2!1sen!2snp!4v1709000000000!5m2!1sen!2snp" width="100%" height="100%" style="border:0;filter:saturate(0.4) brightness(0.7) sepia(0.5)" allowfullscreen="" loading="lazy"></iframe>
+          <div style="position:absolute;top:16px;left:16px;background:var(--terra);color:var(--cream);font-family:var(--sans);font-size:9px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;padding:8px 16px">📍 Bharatpur, Chitwan</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer id="footer">
+    <div class="footer-grid">
+      <div><div class="footer-logo">Athithi</div><div class="footer-tag">Where guests become God — at the edge of Chitwan's wild beauty.</div><div class="footer-addr">Bharatpur-4, Chitwan, Nepal</div></div>
+      <div><div class="fcol-title">Navigate</div><ul class="footer-links"><li><button onclick="go('home')">Home</button></li><li><button onclick="go('rooms')">Rooms</button></li><li><button onclick="go('dining')">Dining</button></li><li><button onclick="go('contact')">Contact</button></li></ul></div>
+      <div><div class="fcol-title">Visit</div><ul class="footer-links"><li><a>Reserve a Room</a></li><li><a>Airport Transfer</a></li><li><a>Group Bookings</a></li><li><a>Private Events</a></li></ul></div>
+      <div><div class="fcol-title">Contact</div><div class="fcr">📞 <span><a href="tel:+9779855060601">+977 98-5506-0601</a></span></div><div class="fcr">📧 <span><a href="mailto:info@hotelatithichitwan.com">info@hotelatithichitwan.com</a></span></div><div class="fcr">🕔 <span>24-Hour Front Desk</span></div></div>
+    </div>
+    <hr class="footer-div"><div class="footer-btm"><div class="footer-copy">© 2025 Hotel Athithi — Restaurant & Lodge, Bharatpur, Chitwan Nepal. All Rights Reserved.</div><div class="footer-sicons"><a class="footer-si" href="https://www.facebook.com" target="_blank">📘</a><a class="footer-si" href="https://www.instagram.com" target="_blank">📸</a><a class="footer-si" href="https://www.tiktok.com" target="_blank">🎵</a><a class="footer-si" href="https://wa.me/9779855060601" target="_blank">💬</a></div></div>
+  </footer>
+</div>
+
+</div><!-- end page wrap -->
+
+<!-- LIGHTBOX -->
+<div id="lb">
+  <div id="lb-wrap">
+    <button id="lb-x" onclick="closeLB()">✕</button>
+    <button class="lb-arr" id="lb-prev" onclick="lbNav(-1)">‹</button>
+    <img id="lb-img" src="" alt="">
+    <button class="lb-arr" id="lb-next" onclick="lbNav(1)">›</button>
+    <div id="lb-cap"></div>
+    <div id="lb-ctr"></div>
+  </div>
+</div>
+
+<!-- MODAL -->
+<div class="modal" id="mainModal" onclick="modalBG(event)">
+  <div class="modal-box">
+    <div class="modal-hd">
+      <div class="modal-ttl">Reserve at Hotel Athithi</div>
+      <button class="modal-x" onclick="closeModal()">✕</button>
+    </div>
+    <div class="modal-bd">
+      <p style="font-family:var(--body);font-size:15px;font-style:italic;color:rgba(250,247,242,.6);margin-bottom:20px">Fastest booking via WhatsApp — our team replies within minutes. Or use our full form on the Contact page.</p>
+      <a class="wa-btn" href="https://wa.me/9779855060601?text=Namaste!%20I'd%20like%20to%20make%20a%20booking%20at%20Hotel%20Athithi%20Bharatpur.%20Could%20you%20please%20share%20room%20availability?" target="_blank" style="text-decoration:none;margin-bottom:12px">
+        💬 &nbsp; Book Instantly via WhatsApp
+      </a>
+      <a href="tel:+9779855060601" style="display:flex;align-items:center;gap:12px;background:rgba(250,247,242,.05);border:1px solid var(--line);color:var(--cream);padding:14px 18px;margin-top:10px;font-family:var(--sans);font-size:10px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;transition:var(--trans)" onmouseover="this.style.borderColor='var(--terra)'" onmouseout="this.style.borderColor=''">📞 &nbsp; Call Now: +977 98-5506-0601</a>
+      <button class="btn-line" onclick="go('contact');closeModal()" style="width:100%;justify-content:center;margin-top:10px">Open Full Booking Form</button>
+    </div>
+  </div>
+</div>
+
+<!-- FAB -->
+<div id="fab">
+  <a class="fab-wa" href="https://wa.me/9779855060601?text=Namaste!%20I'd%20like%20to%20enquire%20about%20Hotel%20Athithi%20Bharatpur." target="_blank" title="WhatsApp">💬</a>
+  <button class="fab-book" onclick="openModal()">Book<br>Room</button>
+</div>
+
+<!-- TOAST -->
+<div id="toast"></div>
+
+<!-- EVTAB STYLE (inline for events page) -->
+<style>
+.evtab{background:none;border:1px solid var(--line);color:rgba(250,247,242,.35);font-family:var(--sans);font-size:9px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;padding:9px 20px;transition:var(--trans)}
+.evtab.active,.evtab:hover{background:var(--terra);color:var(--cream);border-color:var(--terra)}
+</style>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+/* ======================================================
+   THREE.JS — FLOATING JUNGLE PARTICLE FIELD
+   ====================================================== */
+(function(){
+  const canvas=document.getElementById('bg-canvas');
+  const renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:true});
+  renderer.setPixelRatio(Math.min(devicePixelRatio,2));
+  renderer.setSize(innerWidth,innerHeight);
+  const scene=new THREE.Scene();
+  scene.fog=new THREE.FogExp2(0x1a2e1a,0.022);
+  const cam=new THREE.PerspectiveCamera(60,innerWidth/innerHeight,0.1,900);
+  cam.position.set(0,0,18);
+
+  const N=2000;
+  const pos=new Float32Array(N*3);
+  const col=new Float32Array(N*3);
+  const palette=[
+    [0.357,0.545,0.357],  // fern green
+    [0.239,0.380,0.239],  // forest
+    [0.549,0.600,0.341],  // sage
+    [0.710,0.357,0.165],  // terra
+    [0.910,0.784,0.604],  // sand
+    [0.196,0.294,0.196],  // deep jungle
+  ];
+  for(let i=0;i<N;i++){
+    pos[i*3]=(Math.random()-.5)*70;
+    pos[i*3+1]=(Math.random()-.5)*70;
+    pos[i*3+2]=(Math.random()-.5)*65;
+    const c=palette[Math.floor(Math.random()*palette.length)];
+    col[i*3]=c[0];col[i*3+1]=c[1];col[i*3+2]=c[2];
+  }
+  const pGeo=new THREE.BufferGeometry();
+  pGeo.setAttribute('position',new THREE.BufferAttribute(pos,3));
+  pGeo.setAttribute('color',new THREE.BufferAttribute(col,3));
+  scene.add(new THREE.Points(pGeo,new THREE.PointsMaterial({size:.05,vertexColors:true,transparent:true,opacity:.4})));
+
+  // Floating organic shapes
+  const mats=[
+    new THREE.MeshBasicMaterial({color:0x3d6142,wireframe:true,transparent:true,opacity:.08}),
+    new THREE.MeshBasicMaterial({color:0xb5572a,wireframe:true,transparent:true,opacity:.06}),
+    new THREE.MeshBasicMaterial({color:0x5a8a5a,wireframe:true,transparent:true,opacity:.07}),
+  ];
+  const geos=[
+    new THREE.IcosahedronGeometry(1,0),
+    new THREE.OctahedronGeometry(.9),
+    new THREE.CylinderGeometry(.5,.5,1.4,7),
+    new THREE.TorusGeometry(.8,.28,7,14),
+  ];
+  const shapes=[];
+  for(let i=0;i<14;i++){
+    const m=new THREE.Mesh(geos[i%4],mats[i%3].clone());
+    m.position.set((Math.random()-.5)*28,(Math.random()-.5)*28,(Math.random()-.5)*22-4);
+    const s=0.4+Math.random()*1.6;
+    m.scale.setScalar(s);
+    m.userData={rx:(Math.random()-.5)*.005,ry:(Math.random()-.5)*.008,fs:.2+Math.random()*.5,fo:Math.random()*Math.PI*2,by:m.position.y};
+    scene.add(m);shapes.push(m);
+  }
+  let mx=0,my=0,tx=0,ty=0;
+  document.addEventListener('mousemove',e=>{mx=(e.clientX/innerWidth-.5)*2;my=-(e.clientY/innerHeight-.5)*2});
+  const clock=new THREE.Clock();
+  (function loop(){
+    requestAnimationFrame(loop);
+    const t=clock.getElapsedTime();
+    tx+=(mx-tx)*.025;ty+=(my-ty)*.025;
+    cam.position.x=tx*2;cam.position.y=ty*1.5;
+    shapes.forEach(s=>{
+      s.rotation.x+=s.userData.rx;s.rotation.y+=s.userData.ry;
+      s.position.y=s.userData.by+Math.sin(t*s.userData.fs+s.userData.fo)*.8;
+    });
+    renderer.render(scene,cam);
+  })();
+  window.addEventListener('resize',()=>{cam.aspect=innerWidth/innerHeight;cam.updateProjectionMatrix();renderer.setSize(innerWidth,innerHeight)});
+})();
+
+/* ====================================================== CURSOR */
+const curR=document.getElementById('cur-ring'),curD=document.getElementById('cur-dot');
+let cx=0,cy=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{cx=e.clientX;cy=e.clientY});
+document.querySelectorAll('a,button,[onclick]').forEach(el=>{
+  el.addEventListener('mouseenter',()=>document.body.classList.add('hover-cur'));
+  el.addEventListener('mouseleave',()=>document.body.classList.remove('hover-cur'));
+});
+(function cloop(){curD.style.left=cx+'px';curD.style.top=cy+'px';rx+=(cx-rx)*.14;ry+=(cy-ry)*.14;curR.style.left=rx+'px';curR.style.top=ry+'px';requestAnimationFrame(cloop)})();
+
+/* ====================================================== LOADER */
+window.addEventListener('load',()=>{
+  document.getElementById('ldbar').style.width='100%';
+  setTimeout(()=>document.getElementById('loader').classList.add('out'),1800);
+});
+
+/* ====================================================== NAV */
+window.addEventListener('scroll',()=>document.getElementById('nav').classList.toggle('solid',scrollY>50),{passive:true});
+function toggleMob(){document.getElementById('mob-menu').classList.toggle('open')}
+
+/* ====================================================== PAGE NAVIGATION */
+let curPage='home',transitioning=false;
+function go(name){
+  if(name===curPage||transitioning)return;
+  transitioning=true;
+  const wipe=document.getElementById('page-wipe');
+  wipe.classList.remove('wo');wipe.classList.add('wi');
+  setTimeout(()=>{
+    document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+    document.getElementById('page-'+name).classList.add('active');
+    window.scrollTo(0,0);
+    document.querySelectorAll('.nl').forEach(b=>b.classList.remove('active'));
+    const nb=document.getElementById('nb-'+name);if(nb)nb.classList.add('active');
+    curPage=name;
+    wipe.classList.remove('wi');wipe.classList.add('wo');
+    setTimeout(()=>{
+      wipe.classList.remove('wo');transitioning=false;setupReveal();
+      if(name==='dining')renderDining();
+      if(name==='events')renderEvents();
+    },580);
+  },520);
+}
+
+/* ====================================================== REVEAL */
+let revObs;
+function setupReveal(){
+  if(revObs)revObs.disconnect();
+  const page=document.getElementById('page-'+curPage);
+  const els=page.querySelectorAll('.rev,.rev-l,.rev-r');
+  revObs=new IntersectionObserver((entries)=>{entries.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('in'),i*60);revObs.unobserve(e.target)}})},{threshold:.07});
+  els.forEach(el=>revObs.observe(el));
+}
+setTimeout(setupReveal,2000);
+
+/* ====================================================== STAT COUNTERS */
+const statsObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.querySelectorAll('[data-count]').forEach(el=>{const tgt=parseInt(el.dataset.count),suf=el.dataset.suffix||'';let cur=0;const inc=Math.ceil(tgt/50);const timer=setInterval(()=>{cur=Math.min(cur+inc,tgt);el.textContent=cur+suf;if(cur>=tgt)clearInterval(timer)},28)});statsObs.unobserve(e.target)}})},{threshold:.3});
+const statsEl=document.querySelector('.stats-strip');if(statsEl)statsObs.observe(statsEl);
+
+/* ====================================================== LIGHTBOX */
+let lbImgs=[],lbIdx=0;
+const mosaicImgs=[
+  {src:'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1400&q=90',cap:'Hotel Athithi — Your home in Bharatpur'},
+  {src:'https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=1400&q=90',cap:'Deluxe Rooms — Comfort & Style'},
+  {src:'https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=1400&q=90',cap:'Garden View — Lush & Serene'},
+  {src:'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1400&q=90',cap:'Restaurant — Authentic Nepali Cuisine'},
+  {src:'https://images.unsplash.com/photo-1448375240586-882707db888b?w=1400&q=90',cap:'Chitwan National Park — UNESCO World Heritage Site'},
+];
+const igImgs=[
+  {src:'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1200&q=90',cap:'Hotel Athithi'},
+  {src:'https://images.unsplash.com/photo-1448375240586-882707db888b?w=1200&q=90',cap:'Chitwan Jungle'},
+  {src:'https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=1200&q=90',cap:'Our Rooms'},
+  {src:'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1200&q=90',cap:'Restaurant'},
+  {src:'https://images.unsplash.com/photo-1548681528-6a5c45b66b42?w=1200&q=90',cap:'Safari'},
+  {src:'https://images.unsplash.com/photo-1502982720700-bfff97f2ecac?w=1200&q=90',cap:'Cultural Night'},
+];
+const actImgs=[
+  {src:'https://images.unsplash.com/photo-1548681528-6a5c45b66b42?w=1400&q=90',cap:'Jungle Jeep Safari — Chitwan National Park'},
+  {src:'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1400&q=90',cap:'Canoe Ride — Rapti River'},
+  {src:'https://images.unsplash.com/photo-1502982720700-bfff97f2ecac?w=1400&q=90',cap:'Tharu Cultural Show'},
+  {src:'https://images.unsplash.com/photo-1501854140801-50d01698950b?w=1400&q=90',cap:'Bird Watching — 500+ Species'},
+  {src:'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=1400&q=90',cap:'Jungle Nature Walk'},
+  {src:'https://images.unsplash.com/photo-1540206395-68808572332f?w=1400&q=90',cap:'Elephant Breeding Centre'},
+];
+const aboutGal=[
+  {src:'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1400&q=90',cap:'Hotel Athithi'},
+  {src:'https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=1400&q=90',cap:'Our Rooms'},
+  {src:'https://images.unsplash.com/photo-1448375240586-882707db888b?w=1400&q=90',cap:'Chitwan National Park'},
+  {src:'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1400&q=90',cap:'Restaurant'},
+  {src:'https://images.unsplash.com/photo-1548681528-6a5c45b66b42?w=1400&q=90',cap:'Jeep Safari'},
+  {src:'https://images.unsplash.com/photo-1502982720700-bfff97f2ecac?w=1400&q=90',cap:'Tharu Culture'},
+];
+let curLBImgs=[];
+function openLB(idx,imgs){lbImgs=imgs;lbIdx=idx;document.getElementById('lb-img').src=imgs[idx].src;document.getElementById('lb-cap').textContent=imgs[idx].cap;document.getElementById('lb-ctr').textContent=(idx+1)+' / '+imgs.length;document.getElementById('lb').classList.add('open');document.body.style.overflow='hidden'}
+function closeLB(){document.getElementById('lb').classList.remove('open');document.body.style.overflow=''}
+function lbNav(dir){lbIdx=(lbIdx+dir+lbImgs.length)%lbImgs.length;const img=document.getElementById('lb-img');img.style.opacity='0';img.style.transform='scale(.92) translateX('+(dir*18)+'px)';img.style.transition='opacity .2s,transform .2s';setTimeout(()=>{img.src=lbImgs[lbIdx].src;document.getElementById('lb-cap').textContent=lbImgs[lbIdx].cap;document.getElementById('lb-ctr').textContent=(lbIdx+1)+' / '+lbImgs.length;img.style.transition='opacity .3s,transform .4s cubic-bezier(.34,1.56,.64,1)';img.style.opacity='1';img.style.transform='scale(1) translateX(0)'},210)}
+document.getElementById('lb').addEventListener('click',e=>{if(e.target===e.currentTarget)closeLB()});
+document.addEventListener('keydown',e=>{if(!document.getElementById('lb').classList.contains('open'))return;if(e.key==='Escape')closeLB();if(e.key==='ArrowLeft')lbNav(-1);if(e.key==='ArrowRight')lbNav(1)});
+
+/* ====================================================== DINING DATA */
+const diningDB=[
+  {name:'Traditional Dal Bhat Power Set',desc:'Steamed rice, thick lentil soup, seasonal vegetable curry, spinach, pickle, and papad — the soul of Nepal.',price:'NPR 350',img:'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=700&q=85',tags:['veg','nepali'],badge:'🌿 Veg'},
+  {name:'Handmade Steamed Momos',desc:'Traditional Nepali dumplings filled with spiced vegetables or buffalo meat, with tomato achaar.',price:'NPR 250',img:'https://images.unsplash.com/photo-1567188040759-fb8a883dc6d8?w=700&q=85',tags:['nepali'],badge:'🏔️ Nepali'},
+  {name:'Tharu Cultural Set Meal',desc:'Authentic Tharu tribal food — fish curry, wild greens, fermented bamboo shoots, and sticky rice.',price:'NPR 450',img:'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=700&q=85',tags:['nepali','tharu'],badge:'🎭 Tharu'},
+  {name:'Goat Curry (Khasi Ko Masu)',desc:'Slow-cooked Nepali goat curry with fragrant spices and aloo, served with steamed rice or roti.',price:'NPR 550',img:'https://images.unsplash.com/photo-1574484284002-952d92456975?w=700&q=85',tags:['nepali'],badge:'🍖 Nepali'},
+  {name:'Continental Breakfast Platter',desc:'Two farm-fresh eggs your way, toast, butter, fresh fruit, jam, orange juice, and your choice of tea or coffee.',price:'NPR 400',img:'https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=700&q=85',tags:['international','breakfast'],badge:'🌅 Breakfast'},
+  {name:'Grilled Fish — Rapti Special',desc:'Fresh fish from the Rapti River, grilled with lemon, garlic, and Nepali herbs. Served with salad and rice.',price:'NPR 480',img:'https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=700&q=85',tags:['local'],badge:'🐟 Local'},
+  {name:'Vegetable Chowmein',desc:'Stir-fried egg noodles with seasonal vegetables, soy sauce, and sesame — a Nepali street food favourite.',price:'NPR 200',img:'https://images.unsplash.com/photo-1563245372-f21724e3856d?w=700&q=85',tags:['veg','nepali'],badge:'🌿 Veg'},
+  {name:'Chocolate Brownie & Ice Cream',desc:'Rich, fudgy brownie served warm with a scoop of vanilla ice cream — the perfect jungle dessert.',price:'NPR 280',img:'https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=700&q=85',tags:['dessert','veg'],badge:'🍫 Dessert'},
+  {name:'Masala Chai',desc:'Freshly brewed black tea with ginger, cardamom, cinnamon — the authentic Nepali way.',price:'NPR 80',img:'https://images.unsplash.com/photo-1544145945-f90425340c7e?w=700&q=85',tags:['veg','drink'],badge:'☕ Drink'},
+  {name:'Mango Lassi',desc:'Ripe Nepali mango, fresh yogurt, cardamom, and rose water — a cooling Terai classic.',price:'NPR 180',img:'https://images.unsplash.com/photo-1553530666-ba11a7da3888?w=700&q=85',tags:['veg','drink'],badge:'🥭 Drink'},
+  {name:'Cold Beer — Everest / Gorkha',desc:'Nepal\'s finest — ice cold Everest or Gorkha beer, best enjoyed on the rooftop as the jungle sunset unfolds.',price:'NPR 350',img:'https://images.unsplash.com/photo-1535958636474-b021ee887b13?w=700&q=85',tags:['drink'],badge:'🍺 Bar'},
+  {name:'Rooftop Snack Platter',desc:'Mixed papadums, mixed pickles, peanuts, and finger foods — perfect with a sundowner on our terrace.',price:'NPR 320',img:'https://images.unsplash.com/photo-1511690743698-d9d85f2fbf38?w=700&q=85',tags:['veg','snack'],badge:'🌅 Rooftop'},
+];
+
+function renderDining(){
+  const grid=document.getElementById('diningGrid');
+  if(!grid)return;
+  grid.innerHTML=diningDB.map(d=>`
+    <div class="dish-card rev">
+      <div class="dish-img"><img src="${d.img}" alt="${d.name}" loading="lazy"></div>
+      <div class="dish-body">
+        <div style="font-family:var(--sans);font-size:8px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--terra);margin-bottom:6px">${d.badge}</div>
+        <div class="dish-name">${d.name}</div>
+        <div class="dish-desc">${d.desc}</div>
+        <div style="display:flex;align-items:center;justify-content:space-between">
+          <div class="dish-price">${d.price}</div>
+          <a href="https://wa.me/9779855060601?text=Hi!%20I'd%20like%20to%20order%20${encodeURIComponent(d.name)}%20at%20Hotel%20Athithi." target="_blank" onclick="event.stopPropagation()" style="font-family:var(--sans);font-size:8px;letter-spacing:.14em;text-transform:uppercase;color:var(--terra);border-bottom:1px solid var(--terra);padding-bottom:2px;transition:var(--trans)">Order →</a>
+        </div>
+      </div>
+    </div>
+  `).join('');
+  setTimeout(setupReveal,80);
+}
+
+/* ====================================================== EVENTS DATA */
+let eventsDB=[
+  {id:1,name:'Tharu Cultural Night',cat:'cultural',date:'2025-03-15',time:'6:00 PM – 9:00 PM',desc:'Join us for a magical evening of traditional Tharu stick dances, folk music, and authentic Tharu dinner. Held in our garden amphitheatre under the stars.',price:'NPR 800 per person',img:'https://images.unsplash.com/photo-1502982720700-bfff97f2ecac?w=900&q=85',status:'upcoming',gallery:[]},
+  {id:2,name:'Full Moon Safari Night',cat:'safari',date:'2025-03-29',time:'9:00 PM – 12:00 AM',desc:'A rare moonlit jeep safari into Chitwan National Park — track tigers and rhinos under the full moon with our expert naturalist guide.',price:'NPR 2,500 per person',img:'https://images.unsplash.com/photo-1548681528-6a5c45b66b42?w=900&q=85',status:'upcoming',gallery:[]},
+  {id:3,name:'Holi Celebration at Athithi',cat:'festival',date:'2025-03-14',time:'10:00 AM – 4:00 PM',desc:'Celebrate the festival of colours with organic, skin-safe colours, traditional music, special Holi thali lunch, and plenty of joyful chaos in our garden!',price:'Free for hotel guests, NPR 500 for day visitors',img:'https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=900&q=85',status:'upcoming',gallery:[]},
+  {id:4,name:'Weekend Jungle Breakfast',cat:'cultural',date:'2025-02-22',time:'7:00 AM – 10:00 AM',desc:'A special rooftop breakfast with birdwatching — start your morning with birdsong, fresh momos, eggs, and masala chai overlooking the trees.',price:'NPR 600 per person',img:'https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=900&q=85',status:'live',gallery:[]},
+  {id:5,name:'New Year Wildlife Special',cat:'safari',date:'2025-01-01',time:'All Day',desc:'Started 2025 with dawn safari, special breakfast, and complimentary evening cocktails. Guests from 12 countries joined us.',price:'Special Package',img:'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=900&q=85',status:'past',gallery:[]},
+  {id:6,name:'Tihar Festival Dinner',cat:'cultural',date:'2024-11-02',time:'7:00 PM – 10:00 PM',desc:'Traditional Tihar dinner with Deusi-Bhailo songs, flower garlands, and the lighting of 1,000 oil lamps around our garden.',price:'NPR 1,200 pp',img:'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=900&q=85',status:'past',gallery:[]},
+];
+let evFilter='all';
+
+function renderEvents(){renderUpcoming();renderAdminEvs();setTimeout(setupReveal,80)}
+function renderUpcoming(){
+  const list=eventsDB.filter(e=>{
+    if(evFilter==='past')return false;
+    if(evFilter!=='all'&&evFilter!=='upcoming'&&e.cat!==evFilter)return false;
+    return e.status==='upcoming'||e.status==='live';
+  });
+  const cont=document.getElementById('upcomingList');
+  if(!list.length){cont.innerHTML='<p style="font-family:var(--body);font-style:italic;color:rgba(250,247,242,.3);padding:32px 0">No events matching this filter.</p>';return}
+  const catMap={cultural:'🎭 Cultural Night',safari:'🌿 Safari',wedding:'💍 Wedding',festival:'🎉 Festival',corporate:'💼 Corporate',special:'✨ Special Event'};
+  cont.innerHTML=list.map(ev=>{
+    const d=new Date(ev.date);
+    const day=d.getDate(),mon=d.toLocaleDateString('en',{month:'short'}).toUpperCase();
+    return `<div class="ev-card rev">
+      <div class="ev-img">
+        <img src="${ev.img}" alt="${ev.name}" loading="lazy">
+        <div class="ev-date-badge"><div class="evdb-day">${day}</div><div class="evdb-mon">${mon}</div></div>
+        ${ev.status==='live'?'<div class="ev-live">● Live Now</div>':''}
+      </div>
+      <div class="ev-body">
+        <div class="ev-cat">${catMap[ev.cat]||'✨ Event'}</div>
+        <div class="ev-title">${ev.name}</div>
+        <div class="ev-desc">${ev.desc}</div>
+        <div class="ev-meta">
+          <div class="ev-mi">📅 ${d.toLocaleDateString('en',{weekday:'long',day:'numeric',month:'long',year:'numeric'})}</div>
+          <div class="ev-mi">🕔 ${ev.time}</div>
+          <div class="ev-mi">🎫 ${ev.price}</div>
+        </div>
+        <div class="ev-acts">
+          <a href="https://wa.me/9779855060601?text=Namaste!%20I'd%20like%20to%20book%20a%20spot%20for%20${encodeURIComponent(ev.name)}%20at%20Hotel%20Athithi." class="btn-fill" target="_blank">Reserve Spot</a>
+          <button class="btn-line" onclick="openLB(0,[{src:'${ev.img.replace('w=900','w=1400')}',cap:'${ev.name}'}])">View Photo</button>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+}
+function renderAdminEvs(){
+  const cont=document.getElementById('adminEvRows');
+  if(!eventsDB.length){cont.innerHTML='<p style="font-family:var(--body);font-style:italic;color:rgba(250,247,242,.3);padding:16px 0">No events yet.</p>';return}
+  cont.innerHTML=eventsDB.map(ev=>`
+    <div class="admin-ev-row">
+      <div class="admin-ev-thumb"><img src="${ev.img}" alt="${ev.name}" loading="lazy"></div>
+      <div><div class="admin-ev-name">${ev.name}</div><div class="admin-ev-date">${new Date(ev.date).toLocaleDateString('en',{year:'numeric',month:'short',day:'numeric'})} · ${ev.time}</div></div>
+      <div class="admin-ev-status s-${ev.status}">${ev.status}</div>
+      <div class="admin-btns">
+        <button class="abtn" onclick="toggleEvStatus(${ev.id})">Toggle</button>
+        <button class="abtn danger" onclick="delEv(${ev.id})">Delete</button>
+      </div>
+    </div>
+  `).join('');
+}
+document.addEventListener('click',e=>{const b=e.target.closest('.evtab');if(!b||!b.dataset.evf)return;evFilter=b.dataset.evf;document.querySelectorAll('.evtab').forEach(x=>x.classList.remove('active'));b.classList.add('active');renderEvents()});
+
+let uploadedImgs=[];
+function prevImgs(e){uploadedImgs=Array.from(e.target.files);const p=document.getElementById('imgPrev');p.innerHTML=uploadedImgs.map((f,i)=>`<div class="prev-thumb"><img src="${URL.createObjectURL(f)}" alt="P${i}"><button class="prev-rm" onclick="uploadedImgs.splice(${i},1)">✕</button></div>`).join('')}
+function submitEv(e){
+  e.preventDefault();
+  const name=document.getElementById('evName').value.trim();
+  const cat=document.getElementById('evCat').value;
+  const date=document.getElementById('evDate').value;
+  const time=document.getElementById('evTime').value||'TBA';
+  const desc=document.getElementById('evDesc').value.trim()||'A special event at Hotel Athithi Bharatpur.';
+  const price=document.getElementById('evPrice').value.trim()||'Contact for info';
+  const status=document.getElementById('evStatus').value;
+  const imgUrl=uploadedImgs.length?URL.createObjectURL(uploadedImgs[0]):'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=900&q=85';
+  eventsDB.unshift({id:Date.now(),name,cat,date,time,desc,price,img:imgUrl,status,gallery:[]});
+  renderEvents();clearEvForm();showToast('✓ "'+name+'" added!');
+}
+function clearEvForm(){document.getElementById('adminForm').reset();document.getElementById('imgPrev').innerHTML='';uploadedImgs=[]}
+function delEv(id){if(!confirm('Delete event?'))return;eventsDB=eventsDB.filter(e=>e.id!==id);renderEvents();showToast('Event removed.')}
+function toggleEvStatus(id){const ev=eventsDB.find(e=>e.id===id);if(!ev)return;const c={upcoming:'live',live:'past',past:'upcoming'};ev.status=c[ev.status];renderEvents();showToast('Status: '+ev.status)}
+
+/* ====================================================== MODALS & FORMS */
+function openModal(){document.getElementById('mainModal').classList.add('open')}
+function closeModal(){document.getElementById('mainModal').classList.remove('open')}
+function modalBG(e){if(e.target===e.currentTarget)closeModal()}
+function handleRes(e){e.preventDefault();showToast('✓ Booking request sent! We\'ll WhatsApp you shortly.');e.target.reset()}
+
+/* ====================================================== TOAST */
+function showToast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),3500)}
+</script>
+</body>
+</html>
